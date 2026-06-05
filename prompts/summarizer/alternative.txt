@@ -1,0 +1,3 @@
+Page: "Competitor alternative: Sliq pay" (replace Competitor with the actual competitor name in all copy, e.g. "Wise alternative: Sliq pay").
+Generate switch-focused content positioning Sliq pay as the alternative to this competitor.
+Return JSON with: { page_title, hero, winner_banner, reasons_to_switch, switch_steps, comparison_summary, faqs, cta, meta_title, meta_description }

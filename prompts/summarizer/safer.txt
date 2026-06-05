@@ -1,0 +1,3 @@
+Page: "Which is safer: Sliq pay or Competitor" (replace Competitor with the actual competitor name in all copy).
+Generate safety comparison content between Sliq pay and this competitor.
+Return JSON with: { page_title, hero, winner_banner, trust_badges, security_comparison_rows, faqs, cta, meta_title, meta_description }

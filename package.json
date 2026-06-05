@@ -1,0 +1,36 @@
+{
+  "name": "sliqpay-programmatic-pages",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "db:test": "npx ts-node scripts/testDbConnection.ts",
+    "db:schema": "node -r dotenv/config scripts/runSchema.js",
+    "db:migrate": "npx ts-node scripts/migrateSheetMetadata.ts",
+    "seed": "npx ts-node scripts/seedCompetitors.ts",
+    "seed:sheet": "npx ts-node scripts/seedCompetitors.ts --from-sheet",
+    "pipeline": "npx ts-node scripts/runPipeline.ts",
+    "scrape": "npx ts-node scripts/runPipeline.ts --scrape-only",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "next": "^14.2.0",
+    "openai": "^4.104.0",
+    "pg": "^8.13.0",
+    "playwright": "^1.49.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/pg": "^8.11.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.7.0"
+  }
+}

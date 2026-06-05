@@ -1,0 +1,27 @@
+Analyze this money transfer service website content and extract structured metadata.
+
+Return ONLY valid JSON with this exact structure:
+{
+  "service_type": "bank|fintech|remittance|wallet",
+  "transfer_rails": ["ACH", "SWIFT", "UPI", "IMPS", "SEPA"],
+  "geo_coverage": ["US", "IN", "GB"],
+  "supported_currencies": ["USD", "INR", "GBP"],
+  "fee_structure": "free|flat|percentage|mixed",
+  "transfer_speed": "instant|hours|days",
+  "delivery_methods": ["bank", "cash", "wallet", "UPI"],
+  "has_mobile_app": true,
+  "has_business_account": false,
+  "founded_year": 2015,
+  "headquarters": "San Francisco, US",
+  "is_regulated": true,
+  "regulation_bodies": ["FinCEN", "FCA"],
+  "typical_fee_usd_to_inr": "$3.99",
+  "exchange_rate_markup_pct": "1.5%",
+  "transfer_limit_usd": "$50000",
+  "usps": ["No fees on first transfer", "Cash pickup available"],
+  "weaknesses": ["Rate markup after first transfer", "Slow Economy tier"]
+}
+
+Use null for unknown fields. Base answers only on the provided content and manager sheet metadata.
+Include a "data_gaps" array listing fields you could not verify from sources.
+Do not invent competitor fees, speeds, or regulation.

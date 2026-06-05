@@ -1,0 +1,4 @@
+Page: "Sliq pay vs Competitor" (replace Competitor with the actual competitor name in all copy).
+Generate a full comparison between Sliq pay and this competitor.
+Return JSON with: { page_title, hero, verdict_banner, score_cards, comparison_table_rows, deep_dive_sections, faqs, cta, meta_title, meta_description, data_gaps }
+Use "Not stated" for competitor fields missing from sources. List unverified fields in data_gaps.
