@@ -1,4 +1,5 @@
 import { db } from '../db/knowledgeDB';
+import { getPrioritizedKnowledgePages } from '../db/knowledgePages';
 
 export type SheetMetadata = Record<string, string>;
 
@@ -10,41 +11,11 @@ export async function getSheetMetadata(competitorId: number): Promise<SheetMetad
   return rows[0]?.sheet_metadata ?? {};
 }
 
-const KNOWLEDGE_URL_PRIORITY = `
-  ORDER BY
-    CASE
-      WHEN url ILIKE '%pricing%' THEN 1
-      WHEN url ILIKE '%fees%' THEN 1
-      WHEN url ILIKE '%rates%' THEN 1
-      WHEN url ILIKE '%send-money%' THEN 2
-      WHEN url ILIKE '%india%' THEN 2
-      WHEN url ILIKE '%transfer%' THEN 2
-      WHEN url ILIKE '%features%' THEN 3
-      WHEN url ILIKE '%how%' THEN 3
-      WHEN url ILIKE '%security%' THEN 3
-      WHEN url ILIKE '%trust%' THEN 3
-      WHEN url ILIKE '%about%' THEN 4
-      WHEN url ILIKE '%faq%' THEN 4
-      WHEN url ILIKE '%help%' THEN 4
-      ELSE 5
-    END,
-    LENGTH(clean_text) DESC
-`;
-
 export async function getPrioritizedKnowledge(
   competitorId: number,
   limit = 40
 ): Promise<{ url: string; title: string | null; clean_text: string }[]> {
-  const { rows } = await db.query<{ url: string; title: string | null; clean_text: string }>(
-    `
-    SELECT url, title, clean_text FROM knowledge_pages
-    WHERE competitor_id = $1 AND LENGTH(clean_text) > 80
-    ${KNOWLEDGE_URL_PRIORITY}
-    LIMIT $2
-  `,
-    [competitorId, limit]
-  );
-  return rows;
+  return getPrioritizedKnowledgePages(competitorId, limit);
 }
 
 export function formatSheetMetadataForPrompt(meta: SheetMetadata): string {

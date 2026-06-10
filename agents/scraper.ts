@@ -1,6 +1,7 @@
 import { chromium, type Page } from 'playwright';
 import * as cheerio from 'cheerio';
 import { db } from '../db/knowledgeDB';
+import { upsertKnowledgePage } from '../db/knowledgePages';
 import { COMMON_PROBE_PATHS, EXCLUDED_PATH_PATTERNS } from './scraperPaths';
 
 const MAX_PAGES_PER_COMPETITOR = 100;
@@ -232,15 +233,13 @@ export async function scrapeCompetitor(competitorId: number, baseUrl: string): P
           continue;
         }
 
-        await db.query(
-          `
-          INSERT INTO knowledge_pages (competitor_id, url, title, raw_html, clean_text)
-          VALUES ($1, $2, $3, $4, $5)
-          ON CONFLICT (competitor_id, url) DO UPDATE
-          SET title = $3, raw_html = $4, clean_text = $5, scraped_at = NOW()
-        `,
-          [competitorId, url, title, html, cleanText]
-        );
+        await upsertKnowledgePage({
+          competitorId,
+          url,
+          title: title || null,
+          rawHtml: html,
+          cleanText,
+        });
 
         const discovered = extractLinks(html, url, baseOrigin);
         for (const link of discovered) {

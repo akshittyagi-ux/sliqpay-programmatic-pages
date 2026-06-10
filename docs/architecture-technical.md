@@ -12,12 +12,12 @@
 
 We run a **monthly research pipeline** that:
 
-1. Crawls competitor websites and stores raw content in PostgreSQL.
-2. Uses **OpenAI** to extract structured competitor metadata (fees, rails, regulation, etc.).
+1. Crawls competitor websites and stores raw HTML in **MongoDB**.
+2. Uses **OpenAI** to extract structured competitor metadata (fees, rails, regulation, etc.) into **PostgreSQL**.
 3. Uses **OpenAI** again to generate **8 comparison page variants** per competitor (vs, cheaper, faster, etc.).
 4. Stores final page JSON in PostgreSQL for a **Next.js site** to render as static/ISR pages.
 
-The pipeline and the public website can be **separate repositories**; they connect through a **shared PostgreSQL database** (or a future JSON/API export).
+The pipeline and the public website can be **separate repositories**; they connect through **MongoDB** (raw research) and **PostgreSQL** (structured content), or a future JSON/API export.
 
 ---
 
@@ -41,14 +41,14 @@ The pipeline and the public website can be **separate repositories**; they conne
 │ Cheerio         │     │ per competitor   │     │ per competitor  │
 └────────┬────────┘     └────────┬─────────┘     └────────┬────────┘
          │                       │                          │
-         └───────────────────────┴──────────────────────────┘
-                                 ▼
-                    ┌────────────────────────┐
-                    │   PostgreSQL           │
-                    │   • knowledge_pages    │
-                    │   • competitor_metadata│
-                    │   • page_content       │
-                    └────────────┬───────────┘
+         ▼                       └────────────┬─────────────┘
+┌─────────────────┐                            ▼
+│   MongoDB       │              ┌────────────────────────┐
+│ knowledge_pages │              │   PostgreSQL           │
+│ (raw HTML)      │              │   • competitors        │
+└─────────────────┘              │   • competitor_metadata│
+                                 │   • page_content       │
+                                 └────────────┬───────────┘
                                  ▼
                     ┌────────────────────────┐
                     │   WEB REPO (separate)  │
@@ -64,7 +64,8 @@ The pipeline and the public website can be **separate repositories**; they conne
 | Layer | Technology | Role |
 |-------|------------|------|
 | Crawling | Playwright + Cheerio | JS-rendered sites; HTML → clean text |
-| Knowledge store | PostgreSQL | Raw pages + enriched metadata |
+| Document store | MongoDB (`knowledge_pages`) | Raw HTML archive per scraped URL |
+| Structured store | PostgreSQL | Competitors, metadata, page content |
 | Final content store | PostgreSQL (`page_content`) | Structured JSON per page type |
 | AI enrichment | OpenAI API (`gpt-5.5` default) | Metadata + page copy generation |
 | LLM wrapper | `agents/llm.ts` | Shared client, JSON response format |
@@ -79,21 +80,21 @@ The pipeline and the public website can be **separate repositories**; they conne
 ### Agent 1 — Scraper (`agents/scraper.ts`)
 
 **Input:** `competitor_id`, competitor `website_url`  
-**Output:** Rows in `knowledge_pages`  
+**Output:** Documents in MongoDB `knowledge_pages` collection  
 **AI:** None
 
 **Behavior:**
 
 - Breadth-first crawl, same-origin only, up to **1,000 pages** per competitor.
 - Skips blog, news, press, careers paths.
-- Stores `raw_html`, `clean_text`, `title`, `url`.
+- Stores `rawHtml`, `cleanText`, `title`, `url` in MongoDB.
 - 500ms delay between requests; updates `competitors.scrape_status` (`pending` → `running` → `done` / `failed`).
 
 ---
 
 ### Agent 2 — Metadata enrichment (`agents/metadata.ts`)
 
-**Input:** Top 20 `knowledge_pages` (prioritized: pricing, fees, features, how-it-works, about)  
+**Input:** Top 20 MongoDB knowledge pages (prioritized: pricing, fees, features, how-it-works, about)  
 **Output:** One row in `competitor_metadata` per competitor  
 **AI:** OpenAI via `generateJson()` in `agents/llm.ts`
 
@@ -165,7 +166,8 @@ Logs each run in `cron_runs` (status, counts, errors). Supports filtering by `--
 
 ## Database schema
 
-All tables live in one PostgreSQL database (`db/schema.sql`).
+**PostgreSQL** (`db/schema.sql`) holds competitors, enriched metadata, and publishable page content.  
+**MongoDB** (`MONGODB_URI`, collection `knowledge_pages`) holds raw scraped HTML.
 
 ### `competitors`
 
@@ -180,19 +182,22 @@ Master list of money-transfer competitors.
 | `last_scraped_at` | TIMESTAMP | |
 | `scrape_status` | TEXT | `pending` \| `running` \| `done` \| `failed` |
 
-### `knowledge_pages` (Knowledge DB)
+### MongoDB — `knowledge_pages` collection (document store)
 
-Raw crawl output — one row per URL per competitor.
+Raw crawl output — one document per URL per competitor.
 
-| Column | Type | Notes |
+| Field | Type | Notes |
 |--------|------|-------|
-| `id` | SERIAL PK | |
-| `competitor_id` | FK → `competitors` | CASCADE delete |
-| `url` | TEXT | UNIQUE with `competitor_id` |
-| `title` | TEXT | |
-| `raw_html` | TEXT | Full HTML |
-| `clean_text` | TEXT | Text for LLM input |
-| `scraped_at` | TIMESTAMP | |
+| `competitorId` | number | FK to Postgres `competitors.id` |
+| `url` | string | Unique with `competitorId` |
+| `title` | string \| null | |
+| `rawHtml` | string | Full HTML |
+| `cleanText` | string | Text for LLM input |
+| `scrapedAt` | Date | |
+
+**Indexes:** unique `(competitorId, url)`; `(competitorId, scrapedAt)`.
+
+**Env:** `MONGODB_URI` (e.g. `mongodb://localhost:27017/sliqpay_knowledge`).
 
 ### `competitor_metadata`
 
@@ -250,7 +255,7 @@ Operational audit log for pipeline executions.
 ## Entity relationships
 
 ```
-competitors (1) ──< knowledge_pages (many)
+competitors (1) ──< MongoDB knowledge_pages (many, by competitorId)
 competitors (1) ──< competitor_metadata (1)
 competitors (1) ──< page_content (many, up to 8 page types)
 ```
@@ -318,7 +323,10 @@ cron/
 db/
   schema.sql       Table definitions
   pool.ts          PostgreSQL connection pool
-  knowledgeDB.ts   Query exports (pipeline)
+  pool.ts          PostgreSQL pool
+  documentStore.ts MongoDB client
+  knowledgePages.ts Raw scrape repository
+  knowledgeDB.ts   Postgres query exports (pipeline)
   finalInfoDB.ts   Query exports (web)
 prompts/
   metadata.txt

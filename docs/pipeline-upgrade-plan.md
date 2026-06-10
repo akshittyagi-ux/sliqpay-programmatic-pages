@@ -111,7 +111,7 @@ npm run pipeline -- --ids 176 # re-run Wise
 ```
 Google Sheet ──► competitors.sheet_metadata
                       │
-Sitemap + probes ──► knowledge_pages ──► pgvector chunks
+Sitemap + probes ──► MongoDB knowledge_pages ──► pgvector chunks (future)
                       │                        │
                       └──────────┬─────────────┘
                                  ▼

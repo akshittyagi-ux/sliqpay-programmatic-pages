@@ -7,11 +7,11 @@ See [docs/architecture.md](docs/architecture.md) for a management overview, [doc
 ## Architecture
 
 ```
-Competitor URLs → Scraper → Knowledge DB (PostgreSQL)
+Competitor URLs → Scraper → MongoDB (raw HTML)
                               ↓
-                    Metadata Enrichment (OpenAI)
+                    Metadata Enrichment (OpenAI) → PostgreSQL
                               ↓
-                    Summarizer (8 page types) → page_content
+                    Summarizer (8 page types) → page_content (PostgreSQL)
                               ↓
                     Next.js ISR → /compare/[competitor]/[pageType]
 ```
@@ -29,17 +29,19 @@ Competitor URLs → Scraper → Knowledge DB (PostgreSQL)
 
    Copy `.env.example` to `.env` and set:
 
-   - `DATABASE_URL` — PostgreSQL connection string
+   - `DATABASE_URL` — PostgreSQL connection string (competitors, metadata, page content)
+   - `MONGODB_URI` — MongoDB connection string (raw scraped HTML)
    - `OPENAI_API_KEY` — for metadata and summarizer agents
    - `OPENAI_MODEL` — optional, defaults to `gpt-5.5` (OpenAI’s latest frontier model)
 
-3. **Test database connection**
+3. **Test database connections**
 
    ```bash
    npm run db:test
+   npm run db:test:mongo
    ```
 
-   If you see `password authentication failed`, reset the local password (PowerShell **as Administrator**):
+   If PostgreSQL shows `password authentication failed`, reset the local password (PowerShell **as Administrator**):
 
    ```powershell
    cd C:\Users\ishit\Documents\sliqpay-programmatic-pages
@@ -53,6 +55,13 @@ Competitor URLs → Scraper → Knowledge DB (PostgreSQL)
 
    ```bash
    npm run db:schema
+   npm run db:document-store
+   ```
+
+   If you have legacy `knowledge_pages` rows in PostgreSQL from an older install:
+
+   ```bash
+   npm run db:migrate:knowledge
    ```
 
 5. **Seed competitors** (from manager Google Sheet)
@@ -126,14 +135,14 @@ Pages revalidate every 30 days (`revalidate: 2592000`).
 
 `.github/workflows/cron.yml` runs on the 1st of each month (02:00 UTC) and via `workflow_dispatch`.
 
-Add repository secrets: `DATABASE_URL`, `OPENAI_API_KEY`.
+Add repository secrets: `DATABASE_URL`, `MONGODB_URI`, `OPENAI_API_KEY`.
 
 ## Project layout
 
 ```
 agents/          scraper, metadata, summarizer, llm, pageBuilder
 cron/            monthly pipeline orchestrator
-db/              schema.sql, pool, query helpers
+db/              schema.sql, pool, MongoDB document store, query helpers
 docs/            architecture documentation
 prompts/         LLM prompt templates
 pages/compare/   ISR comparison routes (optional; may live in web repo)
@@ -145,7 +154,7 @@ data/            competitors CSV
 
 1. Seed 1–3 competitors from sample CSV
 2. `npx ts-node scripts/runPipeline.ts --ids 1`
-3. Verify rows in `knowledge_pages`, `competitor_metadata`, `page_content`
+3. Verify MongoDB scrape docs + PostgreSQL rows in `competitor_metadata`, `page_content`
 4. `npm run dev` → open `/compare/wise/sliqpay-vs-competitor`
 5. Scale to 5 competitors, then full CSV (250 × 8 = 2,000 pages)
 

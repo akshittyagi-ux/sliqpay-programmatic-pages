@@ -11,17 +11,8 @@ CREATE TABLE IF NOT EXISTS competitors (
   sheet_metadata JSONB -- extra columns from manager Google Sheet
 );
 
--- Raw scraped pages (Knowledge DB)
-CREATE TABLE IF NOT EXISTS knowledge_pages (
-  id SERIAL PRIMARY KEY,
-  competitor_id INT REFERENCES competitors(id) ON DELETE CASCADE,
-  url TEXT NOT NULL,
-  title TEXT,
-  raw_html TEXT,
-  clean_text TEXT,
-  scraped_at TIMESTAMP DEFAULT NOW(),
-  UNIQUE(competitor_id, url)
-);
+-- Raw scraped pages live in MongoDB (MONGODB_URI), collection: knowledge_pages
+-- See db/knowledgePages.ts and npm run db:document-store
 
 -- Metadata per competitor (enriched by OpenAI)
 CREATE TABLE IF NOT EXISTS competitor_metadata (
@@ -68,6 +59,5 @@ CREATE TABLE IF NOT EXISTS cron_runs (
   error_log TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_knowledge_pages_competitor ON knowledge_pages(competitor_id);
 CREATE INDEX IF NOT EXISTS idx_page_content_competitor ON page_content(competitor_id);
 CREATE INDEX IF NOT EXISTS idx_competitors_scrape_status ON competitors(scrape_status);

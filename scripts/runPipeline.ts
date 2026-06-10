@@ -10,6 +10,7 @@ import {
   type PageTypeId,
 } from '../agents/pageTypes';
 import { db, pool } from '../db/knowledgeDB';
+import { closeDocumentStore } from '../db/documentStore';
 
 function resolvePageType(input: string): PageTypeId {
   if (isValidPageType(input)) return input;
@@ -80,12 +81,17 @@ async function main() {
     console.error('DATABASE_URL is required');
     process.exit(1);
   }
+  if (!process.env.MONGODB_URI) {
+    console.error('MONGODB_URI is required');
+    process.exit(1);
+  }
 
   const options = parseArgs();
 
   if (options.ids.length === 1) {
     await runSingleCompetitorSteps(options.ids[0], options);
     await pool.end();
+    await closeDocumentStore();
     return;
   }
 
@@ -98,6 +104,7 @@ async function main() {
   });
 
   await pool.end();
+  await closeDocumentStore();
 }
 
 main().catch((err) => {

@@ -83,18 +83,6 @@ Summarized [Sliq pay vs Abound (Times Club / TClub Inc.)] ...
 SELECT name, website_url, scrape_status, last_scraped_at, sheet_metadata
 FROM competitors WHERE id = 1;
 
--- How much we scraped
-SELECT COUNT(*) AS pages FROM knowledge_pages WHERE competitor_id = 1;
-
--- Sample scraped URLs (marketing pages, not just homepage)
-SELECT url, LENGTH(clean_text) AS chars
-FROM knowledge_pages
-WHERE competitor_id = 1
-  AND url NOT LIKE '%.css%'
-  AND url NOT LIKE '%wp-json%'
-ORDER BY chars DESC
-LIMIT 8;
-
 -- AI competitor profile
 SELECT service_type, fee_structure, transfer_speed, raw_metadata
 FROM competitor_metadata WHERE competitor_id = 1;
@@ -105,7 +93,21 @@ FROM page_content WHERE competitor_id = 1
 ORDER BY page_type;
 ```
 
-**Say:** “Everything is auditable in Postgres — raw research, enriched profile, and final page JSON. We can re-run monthly to refresh.”
+**Show:** MongoDB scrape archive:
+
+```bash
+npm run db:test:mongo -- --competitor-id 1
+```
+
+Or in `mongosh`:
+
+```javascript
+use sliqpay_knowledge
+db.knowledge_pages.countDocuments({ competitorId: 1 })
+db.knowledge_pages.find({ competitorId: 1 }, { url: 1, title: 1, scrapedAt: 1 }).limit(8)
+```
+
+**Say:** “Everything is auditable — raw HTML in MongoDB, enriched profile and page JSON in Postgres. We can re-run monthly to refresh.”
 
 **Honest note for Q&A:** Some scraped URLs are CSS/API endpoints (WordPress noise). Phase 2 of our upgrade plan filters these and prioritizes pricing/fees pages. See `docs/pipeline-upgrade-plan.md`.
 

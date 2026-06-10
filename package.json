@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "db:test": "npx ts-node scripts/testDbConnection.ts",
+    "db:test:mongo": "npx ts-node scripts/testMongoConnection.ts",
     "db:schema": "node -r dotenv/config scripts/runSchema.js",
+    "db:document-store": "npx ts-node scripts/setupDocumentStore.ts",
+    "db:migrate:knowledge": "npx ts-node scripts/migrateKnowledgeToMongo.ts",
     "db:migrate": "npx ts-node scripts/migrateSheetMetadata.ts",
     "seed": "npx ts-node scripts/seedCompetitors.ts",
     "seed:sheet": "npx ts-node scripts/seedCompetitors.ts --from-sheet",
@@ -18,6 +21,7 @@
   "dependencies": {
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
+    "mongodb": "^7.2.0",
     "next": "^14.2.0",
     "openai": "^4.104.0",
     "pg": "^8.13.0",

@@ -20,7 +20,11 @@ jobs:
       - run: npm run db:schema
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - run: npm run db:document-store
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
       - run: npx ts-node scripts/runPipeline.ts --pending
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

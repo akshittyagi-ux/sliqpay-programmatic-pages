@@ -27,7 +27,7 @@ A **content factory** plus a **website**:
 | **Content database** | Stores raw research and finished page copy | Pipeline writes; website reads |
 | **Comparison website** | Publishes pages like `/compare/wise/cheaper` | Customers and search engines |
 
-The pipeline and the public website **do not need to live in the same codebase**. They share one database (or exported content). That keeps marketing design separate from backend automation.
+The pipeline and the public website **do not need to live in the same codebase**. Raw research lives in **MongoDB**; structured page content lives in **PostgreSQL** (or exported JSON). That keeps marketing design separate from backend automation.
 
 ---
 
@@ -103,8 +103,8 @@ Every page includes SEO title and description, comparison sections, FAQs, and a 
 Think of three layers of information:
 
 1. **Competitor list** — Names, websites, and processing status (pending, done, failed).
-2. **Research archive** — Raw material scraped from competitor sites (refreshed monthly).
-3. **Published content** — The 8 finished page variants per competitor, plus SEO metadata.
+2. **Research archive** — Raw HTML scraped from competitor sites, stored in MongoDB (refreshed monthly).
+3. **Published content** — The 8 finished page variants per competitor, plus SEO metadata (PostgreSQL).
 
 A separate **run log** tracks each monthly batch: how many competitors succeeded, what failed, and when the job finished.
 
@@ -174,7 +174,8 @@ Future improvements (not required for launch): parallel processing for speed, sm
 
 | Requirement | Notes |
 |-------------|--------|
-| **PostgreSQL database** | Hosted (e.g. Neon, Supabase, RDS) |
+| **PostgreSQL database** | Competitors, metadata, page content (Neon, Supabase, RDS) |
+| **MongoDB** | Raw scraped HTML document store (Atlas or self-hosted) |
 | **OpenAI API access** | For steps 2 and 3 |
 | **GitHub** | Runs scheduled pipeline; secrets for DB and API keys |
 | **Competitor list** | CSV of names and website URLs |
