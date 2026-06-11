@@ -28,6 +28,7 @@ function parseArgs() {
   let onlyPending = false;
   let scrapeOnly = false;
   let metadataOnly = false;
+  let summarizeOnly = false;
   let singlePageType: string | undefined;
 
   for (let i = 0; i < args.length; i++) {
@@ -35,6 +36,7 @@ function parseArgs() {
     if (arg === '--pending') onlyPending = true;
     if (arg === '--scrape-only') scrapeOnly = true;
     if (arg === '--metadata-only') metadataOnly = true;
+    if (arg === '--summarize-only') summarizeOnly = true;
     if (arg === '--ids' && args[i + 1]) {
       ids.push(...args[++i].split(',').map((id) => parseInt(id, 10)));
     }
@@ -43,7 +45,7 @@ function parseArgs() {
     }
   }
 
-  return { ids, onlyPending, scrapeOnly, metadataOnly, singlePageType };
+  return { ids, onlyPending, scrapeOnly, metadataOnly, summarizeOnly, singlePageType };
 }
 
 async function runSingleCompetitorSteps(
@@ -57,7 +59,7 @@ async function runSingleCompetitorSteps(
   const c = rows[0];
   if (!c) throw new Error(`Competitor ${competitorId} not found`);
 
-  if (!options.metadataOnly) {
+  if (!options.metadataOnly && !options.summarizeOnly) {
     const scrape = await scrapeCompetitor(c.id, c.website_url);
     console.log(`Scrape summary: ${scrape.pageCount} pages saved`);
     if (scrape.pageCount === 0) {
@@ -65,13 +67,13 @@ async function runSingleCompetitorSteps(
     }
   }
 
-  if (!options.scrapeOnly) {
+  if (!options.scrapeOnly && !options.summarizeOnly) {
     await enrichMetadata(c.id);
   }
 
   if (options.singlePageType) {
     await summarizeForPageType(c.id, c.name, resolvePageType(options.singlePageType));
-  } else if (!options.scrapeOnly && !options.metadataOnly) {
+  } else if (options.summarizeOnly || (!options.scrapeOnly && !options.metadataOnly)) {
     await summarizeAllPageTypes(c.id, c.name);
   }
 }

@@ -67,7 +67,7 @@ export async function summarizeForPageType(
     [competitorId]
   );
 
-  const knowledgeText = formatKnowledgeForPrompt(pages, 70_000);
+  const knowledgeText = formatKnowledgeForPrompt(pages, 50_000);
   const metadata = metaRows[0]?.raw_metadata ?? {};
   const pagePrompt = loadPagePrompt(def.promptFile);
 
@@ -97,7 +97,7 @@ Use "Not stated" where competitor data is missing — do not guess.
 
 Scraped competitor website content (${pages.length} pages):
 ${knowledgeText}`,
-    maxTokens: 5000,
+    maxTokens: 10_000,
   });
 
   if (!content.page_title) {
@@ -129,8 +129,20 @@ ${knowledgeText}`,
 }
 
 export async function summarizeAllPageTypes(competitorId: number, competitorName: string) {
+  const errors: string[] = [];
+
   for (const pageType of PAGE_TYPES) {
-    await summarizeForPageType(competitorId, competitorName, pageType);
+    try {
+      await summarizeForPageType(competitorId, competitorName, pageType);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      console.error(`Failed page type ${pageType}: ${message}`);
+      errors.push(`${pageType}: ${message}`);
+    }
     await new Promise((r) => setTimeout(r, 1000));
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Summarize incomplete (${errors.length} failed):\n${errors.join('\n')}`);
   }
 }

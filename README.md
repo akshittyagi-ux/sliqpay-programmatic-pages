@@ -2,7 +2,7 @@
 
 Research agent pipeline that scrapes competitor sites, enriches metadata with OpenAI, summarizes content per page type, and publishes static comparison pages via Next.js ISR.
 
-See [docs/architecture.md](docs/architecture.md) for a management overview, [docs/architecture-technical.md](docs/architecture-technical.md) for engineering detail, [docs/pipeline-upgrade-plan.md](docs/pipeline-upgrade-plan.md) for the quality roadmap, and **[docs/DEMO.md](docs/DEMO.md)** for the Abound pilot walkthrough.
+See [docs/architecture.md](docs/architecture.md) for a management overview, [docs/architecture-technical.md](docs/architecture-technical.md) for engineering detail, [docs/pipeline-upgrade-plan.md](docs/pipeline-upgrade-plan.md) for the quality roadmap, **[docs/DEMO.md](docs/DEMO.md)** for the Abound pilot walkthrough, and **[docs/TECHNICAL-WALKTHROUGH.md](docs/TECHNICAL-WALKTHROUGH.md)** for a full deep-dive prep guide (demo / technical review).
 
 ## Architecture
 
@@ -91,6 +91,7 @@ Competitor URLs → Scraper → MongoDB (raw HTML)
 | `npm run pipeline -- --ids 1` | Single competitor by id |
 | `npm run pipeline -- --ids 1 --page-type which-is-cheaper` | One page type only |
 | `npm run scrape` | Scrape only (`--scrape-only`) |
+| `npm run pipeline -- --summarize-only` | Re-run page generation without scrape/metadata |
 
 Examples:
 

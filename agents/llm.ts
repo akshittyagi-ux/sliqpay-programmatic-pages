@@ -27,28 +27,53 @@ export type GenerateJsonOptions = {
   model?: string;
 };
 
+const MAX_ATTEMPTS = 3;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export async function generateJson<T = unknown>(options: GenerateJsonOptions): Promise<T> {
   const model = options.model ?? DEFAULT_MODEL;
   const tokenLimit = options.maxTokens ?? 2000;
+  let lastError: Error | undefined;
 
-  const params: ChatCompletionCreateParamsNonStreaming = {
-    model,
-    response_format: { type: 'json_object' },
-    messages: [{ role: 'user', content: options.prompt }],
-  };
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const params: ChatCompletionCreateParamsNonStreaming = {
+      model,
+      response_format: { type: 'json_object' },
+      messages: [{ role: 'user', content: options.prompt }],
+    };
 
-  if (usesMaxCompletionTokens(model)) {
-    params.max_completion_tokens = tokenLimit;
-  } else {
-    params.max_tokens = tokenLimit;
+    if (usesMaxCompletionTokens(model)) {
+      params.max_completion_tokens = tokenLimit;
+    } else {
+      params.max_tokens = tokenLimit;
+    }
+
+    try {
+      const response = await getClient().chat.completions.create(params);
+      const choice = response.choices[0];
+      const raw = choice?.message?.content;
+
+      if (raw) {
+        return parseJsonFromModel(raw) as T;
+      }
+
+      const finishReason = choice?.finish_reason ?? 'unknown';
+      lastError = new Error(
+        `OpenAI returned empty content (finish_reason=${finishReason}, attempt ${attempt}/${MAX_ATTEMPTS})`
+      );
+    } catch (err) {
+      lastError = err instanceof Error ? err : new Error(String(err));
+    }
+
+    if (attempt < MAX_ATTEMPTS) {
+      const delayMs = attempt * 2000;
+      console.warn(`${lastError.message} — retrying in ${delayMs}ms...`);
+      await sleep(delayMs);
+    }
   }
 
-  const response = await getClient().chat.completions.create(params);
-
-  const raw = response.choices[0]?.message?.content;
-  if (!raw) {
-    throw new Error('OpenAI returned empty content');
-  }
-
-  return parseJsonFromModel(raw) as T;
+  throw lastError ?? new Error('OpenAI returned empty content');
 }
