@@ -2,9 +2,12 @@ name: Daily Competitor Refresh
 
 # Refreshes a couple of competitors a day (picked by longest-stale
 # last_scraped_at) and pushes the updated evidence straight to Sliq-website's
-# main branch, which Vercel auto-deploys. See cron.yml for the separate
-# monthly "catch anything ever marked pending" run — this one instead
-# rotates through every competitor on a steady cadence regardless of status.
+# Release/v0 branch (its actual default/production branch, confirmed via
+# `git remote show origin` — NOT "main", which also exists but isn't what
+# Vercel deploys from), which Vercel then auto-deploys. See cron.yml for the
+# separate monthly "catch anything ever marked pending" run — this one
+# instead rotates through every competitor on a steady cadence regardless of
+# status.
 
 on:
   schedule:
@@ -29,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ARKS-Ventures/Sliq-website
+          ref: Release/v0
           ssh-key: ${{ secrets.SLIQ_WEBSITE_DEPLOY_KEY }}
           path: Sliq-website
           fetch-depth: 1
@@ -78,5 +82,5 @@ jobs:
             echo "No content changes — skipping commit."
           else
             git commit -m "chore: daily competitor refresh (${{ steps.pick.outputs.names }})"
-            git push origin HEAD:main
+            git push origin HEAD:Release/v0
           fi
