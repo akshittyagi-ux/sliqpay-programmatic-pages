@@ -1,5 +1,5 @@
 import { db } from '../db/knowledgeDB';
-import { getPrioritizedKnowledgePages } from '../db/knowledgePages';
+import { getCompareKnowledgePages, getPrioritizedKnowledgePages } from '../db/knowledgePages';
 
 export type SheetMetadata = Record<string, string>;
 
@@ -16,6 +16,13 @@ export async function getPrioritizedKnowledge(
   limit = 40
 ): Promise<{ url: string; title: string | null; clean_text: string }[]> {
   return getPrioritizedKnowledgePages(competitorId, limit);
+}
+
+export async function getCompareKnowledge(
+  competitorId: number,
+  limit = 30
+): Promise<{ url: string; title: string | null; clean_text: string }[]> {
+  return getCompareKnowledgePages(competitorId, limit);
 }
 
 export function formatSheetMetadataForPrompt(meta: SheetMetadata): string {

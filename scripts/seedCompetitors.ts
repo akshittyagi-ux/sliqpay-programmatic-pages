@@ -19,9 +19,10 @@ async function main() {
 
   if (fromSheet || process.env.COMPETITORS_SEED_FROM_SHEET === 'true') {
     const sheetId = process.env.COMPETITORS_SHEET_ID ?? DEFAULT_GOOGLE_SHEET_ID;
+    const gid = process.env.COMPETITORS_SHEET_GID ?? '0';
     source = `Google Sheet (${sheetId})`;
-    console.log(`Fetching: ${googleSheetExportUrl(sheetId)}`);
-    csvText = await fetchGoogleSheetCsv();
+    console.log(`Fetching: ${googleSheetExportUrl(sheetId, gid)}`);
+    csvText = await fetchGoogleSheetCsv(sheetId, gid);
   } else {
     const csvPath =
       fileArg || path.join(__dirname, '../data/competitors.csv');

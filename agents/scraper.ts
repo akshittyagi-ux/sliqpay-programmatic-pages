@@ -1,8 +1,9 @@
 import { chromium, type Page } from 'playwright';
 import * as cheerio from 'cheerio';
 import { db } from '../db/knowledgeDB';
-import { upsertKnowledgePage } from '../db/knowledgePages';
-import { COMMON_PROBE_PATHS, EXCLUDED_PATH_PATTERNS } from './scraperPaths';
+import { upsertKnowledgePage, deleteKnowledgePage } from '../db/knowledgePages';
+import { COMMON_PROBE_PATHS, EXCLUDED_PATH_PATTERNS, LOCALE_PROBE_PATHS } from './scraperPaths';
+import { isErrorPage } from './scraperContent';
 
 const MAX_PAGES_PER_COMPETITOR = 100;
 const GOTO_TIMEOUT_MS = 45_000;
@@ -45,8 +46,30 @@ function isSameOrigin(absolute: string, baseOrigin: string): boolean {
   }
 }
 
+// Static asset extensions occasionally get discovered as same-origin links
+// (e.g. JS/CSS bundle URLs embedded in inline scripts) and, without this
+// guard, get parsed and stored as "content" — minified JS is >80 chars of
+// non-error text, so it passes every other content-quality check.
+const NON_CONTENT_EXTENSIONS = [
+  '.xml',
+  '.js',
+  '.css',
+  '.json',
+  '.svg',
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.webp',
+  '.ico',
+  '.woff',
+  '.woff2',
+  '.ttf',
+  '.webmanifest',
+];
+
 function shouldSkipUrl(url: string): boolean {
-  const lower = url.toLowerCase();
+  const lower = url.split(/[?#]/)[0].toLowerCase();
+  if (NON_CONTENT_EXTENSIONS.some((ext) => lower.endsWith(ext))) return true;
   return EXCLUDED_PATH_PATTERNS.some((p) => lower.includes(p));
 }
 
@@ -107,6 +130,11 @@ async function fetchText(url: string): Promise<string | null> {
   }
 }
 
+// Sitemap-index files link to nested per-locale/per-section sitemap.xml files
+// rather than real pages. Those nested files must be expanded recursively for
+// their <loc> page URLs, not queued as scrapeable content themselves — doing
+// the latter previously burned the whole MAX_PAGES_PER_COMPETITOR budget on
+// raw XML for sites with many locale sitemaps (e.g. MoneyGram).
 async function discoverSitemapUrls(baseUrl: string, baseOrigin: string): Promise<string[]> {
   const candidates = [
     `${baseOrigin}/sitemap.xml`,
@@ -116,6 +144,7 @@ async function discoverSitemapUrls(baseUrl: string, baseOrigin: string): Promise
   ];
 
   const urls = new Set<string>();
+  const visitedSitemaps = new Set<string>();
 
   for (const sitemapUrl of candidates) {
     const text = await fetchText(sitemapUrl);
@@ -125,29 +154,51 @@ async function discoverSitemapUrls(baseUrl: string, baseOrigin: string): Promise
       for (const line of text.split('\n')) {
         const m = line.match(/^Sitemap:\s*(.+)$/i);
         if (m?.[1]) {
-          const nested = await fetchText(m[1].trim());
-          if (nested) parseSitemapXml(nested, baseOrigin, urls);
+          await parseSitemapXmlRecursive(m[1].trim(), baseOrigin, urls, visitedSitemaps);
         }
       }
       continue;
     }
 
-    parseSitemapXml(text, baseOrigin, urls);
+    await parseSitemapXmlRecursive(sitemapUrl, baseOrigin, urls, visitedSitemaps, text);
   }
 
   return [...urls].filter((u) => !shouldSkipUrl(u)).slice(0, 80);
 }
 
-function parseSitemapXml(xml: string, baseOrigin: string, out: Set<string>) {
+async function parseSitemapXmlRecursive(
+  sitemapUrl: string,
+  baseOrigin: string,
+  out: Set<string>,
+  visited: Set<string>,
+  preloadedText?: string,
+  depth = 0
+): Promise<void> {
+  if (visited.has(sitemapUrl) || depth > 2 || visited.size > 30) return;
+  visited.add(sitemapUrl);
+
+  const xml = preloadedText ?? (await fetchText(sitemapUrl));
+  if (!xml) return;
+
+  const nestedSitemaps: string[] = [];
+
   for (const match of xml.matchAll(/<loc>([^<]+)<\/loc>/gi)) {
     try {
       const loc = normalizeUrl(match[1].trim());
-      if (isSameOrigin(loc, baseOrigin) && !shouldSkipUrl(loc)) {
+      if (!isSameOrigin(loc, baseOrigin) || shouldSkipUrl(loc)) continue;
+
+      if (loc.toLowerCase().endsWith('.xml')) {
+        nestedSitemaps.push(loc);
+      } else {
         out.add(loc);
       }
     } catch {
       /* skip */
     }
+  }
+
+  for (const nested of nestedSitemaps) {
+    await parseSitemapXmlRecursive(nested, baseOrigin, out, visited, undefined, depth + 1);
   }
 }
 
@@ -156,6 +207,14 @@ function buildInitialQueue(baseUrl: string, sitemapUrls: string[]): string[] {
   const queue: string[] = [];
 
   for (const path of COMMON_PROBE_PATHS) {
+    try {
+      queue.push(normalizeUrl(new URL(path, baseUrl).toString()));
+    } catch {
+      /* skip */
+    }
+  }
+
+  for (const path of LOCALE_PROBE_PATHS) {
     try {
       queue.push(normalizeUrl(new URL(path, baseUrl).toString()));
     } catch {
@@ -194,9 +253,27 @@ async function loadPageContent(page: Page, url: string): Promise<string> {
   throw lastError ?? new Error(`Failed to load ${url}`);
 }
 
+async function launchBrowserWithRetry(attempts = 3) {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await chromium.launch({ headless: true });
+    } catch (err) {
+      lastError = err;
+      console.warn(
+        `  Browser launch failed (attempt ${attempt}/${attempts}): ${err instanceof Error ? err.message : err}`
+      );
+      if (attempt < attempts) {
+        await new Promise((r) => setTimeout(r, attempt * 3000));
+      }
+    }
+  }
+  throw lastError;
+}
+
 export async function scrapeCompetitor(competitorId: number, baseUrl: string): Promise<ScrapeResult> {
   const baseOrigin = new URL(baseUrl).origin;
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowserWithRetry();
   const visited = new Set<string>();
   const savedUrls: string[] = [];
   const failedUrls: string[] = [];
@@ -229,6 +306,13 @@ export async function scrapeCompetitor(competitorId: number, baseUrl: string): P
 
         if (cleanText.length < 80) {
           console.warn(`  Skipped (thin content): ${url}`);
+          failedUrls.push(url);
+          continue;
+        }
+
+        if (isErrorPage(title, cleanText)) {
+          await deleteKnowledgePage(competitorId, url);
+          console.warn(`  Skipped (error page): ${url}`);
           failedUrls.push(url);
           continue;
         }

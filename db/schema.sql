@@ -61,3 +61,17 @@ CREATE TABLE IF NOT EXISTS cron_runs (
 
 CREATE INDEX IF NOT EXISTS idx_page_content_competitor ON page_content(competitor_id);
 CREATE INDEX IF NOT EXISTS idx_competitors_scrape_status ON competitors(scrape_status);
+
+-- Multi-provider marketing compare pages (e.g. wise + remitly vs Sliq pay)
+CREATE TABLE IF NOT EXISTS compare_pages (
+  id SERIAL PRIMARY KEY,
+  slug TEXT UNIQUE NOT NULL,
+  provider_slugs TEXT[] NOT NULL,
+  content JSONB NOT NULL,
+  meta_title TEXT,
+  meta_description TEXT,
+  generated_at TIMESTAMP DEFAULT NOW(),
+  needs_refresh BOOLEAN DEFAULT FALSE
+);
+
+CREATE INDEX IF NOT EXISTS idx_compare_pages_slug ON compare_pages(slug);

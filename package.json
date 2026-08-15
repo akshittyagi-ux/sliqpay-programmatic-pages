@@ -14,7 +14,12 @@
     "db:migrate": "npx ts-node scripts/migrateSheetMetadata.ts",
     "seed": "npx ts-node scripts/seedCompetitors.ts",
     "seed:sheet": "npx ts-node scripts/seedCompetitors.ts --from-sheet",
+    "competitors:status": "npx ts-node scripts/checkCompetitorStatus.ts",
     "pipeline": "npx ts-node scripts/runPipeline.ts",
+    "compare:build": "npx ts-node scripts/runComparePages.ts",
+    "provider:evidence": "npx ts-node scripts/buildProviderEvidence.ts",
+    "export:providers": "npx ts-node scripts/exportProviderEvidence.ts",
+    "export:compare": "npx ts-node scripts/exportComparePages.ts",
     "scrape": "npx ts-node scripts/runPipeline.ts --scrape-only",
     "typecheck": "tsc --noEmit"
   },
@@ -27,7 +32,8 @@
     "pg": "^8.13.0",
     "playwright": "^1.49.0",
     "react": "^18.3.0",
-    "react-dom": "^18.3.0"
+    "react-dom": "^18.3.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "^20.17.0",

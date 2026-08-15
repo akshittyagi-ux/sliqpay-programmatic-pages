@@ -19,9 +19,30 @@ Return ONLY valid JSON with this exact structure:
   "exchange_rate_markup_pct": "1.5%",
   "transfer_limit_usd": "$50000",
   "usps": ["No fees on first transfer", "Cash pickup available"],
-  "weaknesses": ["Rate markup after first transfer", "Slow Economy tier"]
+  "weaknesses": ["Rate markup after first transfer", "Slow Economy tier"],
+  "audience_segments": {"expats": true, "businesses": false, "freelancers": false, "tourists": false},
+  "audience_segments_quote": "Exact sentence from the site that supports the audience segments you marked true",
+  "fee_pct_signal": "1-2%",
+  "fee_pct_quote": "Exact sentence or pricing text from the site that supports the fee percentage band",
+  "mid_market_rate_mentioned": false,
+  "mid_market_rate_quote": "Exact sentence mentioning mid-market/Google exchange rate, or empty string",
+  "speed_signal": "same_or_next_business_day",
+  "speed_quote": "Exact sentence from the site describing transfer speed, or empty string",
+  "security_mentioned": true,
+  "security_quote": "Exact sentence from the site about data security/safety, or empty string",
+  "regulatory_signal": {"fincen_or_nmls_or_mtl_mentioned": true, "crypto_or_stablecoin_mentioned": false},
+  "regulatory_quote": "Exact sentence supporting the regulatory signals, or empty string"
 }
 
 Use null for unknown fields. Base answers only on the provided content and manager sheet metadata.
 Include a "data_gaps" array listing fields you could not verify from sources.
 Do not invent competitor fees, speeds, or regulation.
+
+Classification signal rules (report facts only — never marketing language, never a guess):
+- "audience_segments": mark a segment true only if the website text explicitly targets or names that audience (expats/NRIs, businesses/companies, freelancers/contractors, tourists/travelers). All four default to false when unsupported.
+- "fee_pct_signal": the fee band the website's own pricing text supports: one of "1%", "1-2%", "2-3%", "3-4%", "4%+". Boundary values go to the higher band: a fee of exactly 2% belongs in "2-3%", exactly 3% belongs in "3-4%". Use null if the site gives no usable fee percentage.
+- "mid_market_rate_mentioned": true only if the site explicitly claims the mid-market rate, Google exchange rate, or an equivalent no-markup real-rate claim by name. A vague "great rates" claim is false.
+- "speed_signal": "fast_transfer" if the site advertises fast/instant/within-minutes delivery; "same_or_next_business_day" if it says same or next business day; "standard_3_5_days" if it describes standard transfers taking about 3-5 days; "not_mentioned" if speed is not described. If different pages conflict, choose the slower (more conservative) signal.
+- "security_mentioned": true only if the site describes concrete security or safety measures (encryption, fraud protection, 2FA, PCI, safeguarding).
+- "regulatory_signal.fincen_or_nmls_or_mtl_mentioned": true only if the site mentions FinCEN, NMLS, or a money transmitter license. "crypto_or_stablecoin_mentioned": true if the site mentions stablecoins or cryptocurrency anywhere in its product offering.
+- Every *_quote field must be a verbatim quote copied from the provided content that supports the signal; use an empty string when the signal is negative/absent.

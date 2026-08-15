@@ -2,7 +2,7 @@
 
 Research agent pipeline that scrapes competitor sites, enriches metadata with OpenAI, summarizes content per page type, and publishes static comparison pages via Next.js ISR.
 
-See [docs/architecture.md](docs/architecture.md) for a management overview, [docs/architecture-technical.md](docs/architecture-technical.md) for engineering detail, [docs/pipeline-upgrade-plan.md](docs/pipeline-upgrade-plan.md) for the quality roadmap, **[docs/DEMO.md](docs/DEMO.md)** for the Abound pilot walkthrough, and **[docs/TECHNICAL-WALKTHROUGH.md](docs/TECHNICAL-WALKTHROUGH.md)** for a full deep-dive prep guide (demo / technical review).
+See [docs/architecture.md](docs/architecture.md) for a management overview, [docs/architecture-technical.md](docs/architecture-technical.md) for engineering detail, [docs/pipeline-upgrade-plan.md](docs/pipeline-upgrade-plan.md) for the quality roadmap, **[docs/DEMO.md](docs/DEMO.md)** for the Abound pilot walkthrough, **[docs/TECHNICAL-WALKTHROUGH.md](docs/TECHNICAL-WALKTHROUGH.md)** for a full deep-dive prep guide (demo / technical review), and **[docs/COMPARE_PAGES_DEVELOPER_GUIDE.md](docs/COMPARE_PAGES_DEVELOPER_GUIDE.md)** for the end-to-end compare pages guide (both repos, field mapping, scaling to ~250 competitors).
 
 ## Architecture
 

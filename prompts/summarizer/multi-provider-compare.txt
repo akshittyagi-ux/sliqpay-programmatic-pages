@@ -1,0 +1,124 @@
+Page: Multi-provider comparison for the Sliq Pay marketing website.
+Generate a full comparison page JSON document for Sliq pay vs the listed competitors.
+
+Return ONLY valid JSON matching this exact top-level shape:
+{
+  "slug": string,
+  "meta": { "title": string, "description": string, "robots": "index, follow" },
+  "hero": { "heading": string },
+  "corridor": {
+    "sendCurrency": "USD",
+    "receiveCurrency": "INR",
+    "payinRail": "ACH",
+    "payoutRail": "UPI",
+    "receiveAmount": 100
+  },
+  "competitorComparison": {
+    "mobileDefaults": { "leftId": string, "rightId": string },
+    "rows": [
+      { "id": "builtFor", "label": "Built For", "mobileHeight": 110, "desktopHeight": 100 },
+      { "id": "transferMethods", "label": "Transfer Methods", "mobileHeight": 110, "desktopHeight": 100 },
+      { "id": "cost", "label": "Cost", "mobileHeight": 130, "desktopHeight": 100 },
+      { "id": "fxRate", "label": "FX Rate Transparency", "mobileHeight": 150, "desktopHeight": 127 },
+      { "id": "speed", "label": "Speed", "mobileHeight": 110, "desktopHeight": 100 },
+      { "id": "security", "label": "Security & Safety", "mobileHeight": 130, "desktopHeight": 100 },
+      { "id": "compliance", "label": "Compliance & Regulation", "mobileHeight": 90, "desktopHeight": 100 }
+    ],
+    "providers": [
+      {
+        "id": string,
+        "name": string,
+        "iconSrc": "/image/compare/section1-{slug}-wordmark.png",
+        "logoType": "wordmark" | "brand",
+        "iconWidth": number,
+        "iconHeight": number,
+        "iconSize": number,
+        "highlighted": boolean,
+        "showStoreButtons": boolean (Sliq only),
+        "cells": [
+          { "text": string, "icon": "positive" | "negative" | "neutral", "iconVariant": "alt" (optional), "emphasized": boolean (optional) }
+        ]
+      }
+    ]
+  },
+  "speedComparison": {
+    "rows": [
+      {
+        "id": string,
+        "barSrc": "/image/compare/section2-bar-{id}.png",
+        "logoSrc": "/image/programmatic/{slug}.svg",
+        "logoAlt": string,
+        "copy": {
+          "type": "highlight" | "timeframe",
+          "prefix": string,
+          "highlight": string,
+          "suffix": string (timeframe only)
+        }
+      }
+    ]
+  },
+  "priceSection": {
+    "heading": "Compare Costs\nBefore You Send",
+    "description": string (two paragraphs separated by \\n\\n)
+  },
+  "featureComparison": {
+    "heading": string,
+    "description": string,
+    "features": [
+      { "id": "easyToUse", "label": "Easy to use" },
+      { "id": "scanToPay", "label": "Scan to pay like a local" },
+      { "id": "sendPhoneEmail", "label": "Send to phone/email" },
+      { "id": "sendBank", "label": "Send to bank account" },
+      { "id": "requestMoney", "label": "Request money" },
+      { "id": "instantTransfers", "label": "Instant transfers" }
+    ],
+    "providers": [
+      {
+        "id": string,
+        "name": string,
+        "iconSrc": "/image/programmatic/{slug}.svg",
+        "highlighted": boolean,
+        "cells": ["positive" | "negative" | "neutral", ...] (6 values, one per feature)
+      }
+    ]
+  },
+  "securityCompliance": {
+    "heading": "Security & Compliance",
+    "description": string,
+    "bullets": [string, ...]
+  },
+  "supportComparison": {
+    "columns": [
+      {
+        "id": string,
+        "name": string,
+        "iconSrc": "/image/programmatic/{slug}.svg",
+        "tagline": string,
+        "subtitle": string (Sliq only, optional),
+        "backgroundPattern": "/image/compare/section6-{id}-pattern.png",
+        "gradientBackground": "/image/compare/section6-sliq-gradient.jpg" (Sliq only),
+        "highlighted": boolean,
+        "showVerifyBadge": boolean (Sliq only),
+        "showStoreButtons": boolean (Sliq only)
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "items": [{ "question": string, "answer": string }]
+  },
+  "guidelines": {
+    "paragraphs": [string, string]
+  },
+  "data_gaps": [string]
+}
+
+Rules:
+- Provider order in tables: competitors first (as given), then Sliq pay last with highlighted=true.
+- Sliq provider id must be "sliq", name "Sliq pay", section1 iconSrc "/image/compare/section1-sliq-union-logo.svg", logoType "brand".
+- For programmatic icons use "/image/programmatic/sliq-pay.svg" (not sliq.svg).
+- speedComparison row order: Sliq first (highlight copy), then competitors.
+- Use only verified competitor facts from sources. Use "Not stated" in cell text when missing.
+- List unverified fields in data_gaps.
+- meta.title and meta.description must be SEO-friendly for the comparison slug.
+- hero.heading should name the competitors and year when relevant.

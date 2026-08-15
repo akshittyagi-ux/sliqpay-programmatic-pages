@@ -1,0 +1,428 @@
+{
+  "id": "instarem-nium",
+  "name": "Instarem (Nium)",
+  "evidence": [
+    {
+      "id": "instarem-nium.builtFor",
+      "providerId": "instarem-nium",
+      "field": "builtFor",
+      "value": "Expats, Businesses",
+      "displayValue": "Expats, Businesses",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "builtFor",
+        "quote": "What is an FCNR Deposit? A complete guide for NRIs In addition to international money transfer for individuals, Instarem offers cross border payment solutions for businesses.",
+        "retrievedAt": "2026-08-03T12:58:49.557Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "instarem-nium.transferMethods",
+      "providerId": "instarem-nium",
+      "field": "transferMethods",
+      "value": "Credit Card, Debit Card",
+      "displayValue": "Credit Card, Debit Card",
+      "source": {
+        "url": "officialPage:instarem-nium",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: Credit Card, Debit Card.",
+        "retrievedAt": "2026-08-03T12:58:49.627Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    {
+      "id": "instarem-nium.cost",
+      "providerId": "instarem-nium",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:instarem-nium",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:49.627Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "instarem-nium.fxRate",
+      "providerId": "instarem-nium",
+      "field": "fxRate",
+      "value": "Mid-market exchange rate (no mark-ups) in most cases",
+      "displayValue": "Mid-market exchange rate (no mark-ups) in most cases",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "fxRate",
+        "quote": "While some banks and financial organisations may have unfavourable rates and hidden fees, Instarem offers competitive foreign exchange rates close to mid-market rates, with low fees.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "instarem-nium.speed",
+      "providerId": "instarem-nium",
+      "field": "speed",
+      "value": "Most transfers clear in 1-2 days",
+      "displayValue": "Most transfers clear in 1-2 days",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "speed",
+        "quote": "Once we receive your funds, your transfer may be sent to your recipient instantly or may take up to 1-2 business days.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "instarem-nium.security",
+      "providerId": "instarem-nium",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "security",
+        "quote": "As a licensed and regulated service, Instarem requires certain details to verify your identity and safeguard your transactions.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "instarem-nium.compliance",
+      "providerId": "instarem-nium",
+      "field": "compliance",
+      "value": "Uncertain regulatory compliance",
+      "displayValue": "Uncertain regulatory compliance",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "compliance",
+        "quote": "compliance classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "instarem-nium.support",
+      "providerId": "instarem-nium",
+      "field": "support",
+      "value": "",
+      "displayValue": "",
+      "source": {
+        "url": "officialPage:instarem-nium",
+        "title": "support",
+        "quote": "No specific support channel (email/chat/call) documented on site.",
+        "retrievedAt": "2026-08-03T12:58:49.661Z"
+      },
+      "confidence": "low",
+      "method": "officialPage"
+    },
+    {
+      "id": "instarem-nium.feature.easyToUse",
+      "providerId": "instarem-nium",
+      "field": "feature.easyToUse",
+      "value": "Fast Most transfers are instant or same day Low-cost Competitive exchange rates and low fees Safe Licensed and regulated in 11 countries Transparent All costs are upfront, no hidden charges Rewarding",
+      "displayValue": "Fast Most transfers are instant or same day Low-cost Competitive exchange rates and low fees Safe Licensed and regulated in 11 countries Transparent All costs are upfront, no hidden charges Rewarding",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Fast Most transfers are instant or same day Low-cost Competitive exchange rates and low fees Safe Licensed and regulated in 11 countries Transparent All costs are upfront, no hidden charges Rewarding Earn rewards on every transaction One app for all your overseas transfers We believe in keeping things simple, fast, and low-cost.",
+        "retrievedAt": "2026-08-03T12:58:49.662Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "instarem-nium.feature.scanToPay",
+      "providerId": "instarem-nium",
+      "field": "feature.scanToPay",
+      "value": "Location India Australia Austria Canada Global France Germany Hong Kong Ireland Japan Malaysia Netherlands Singapore United Kingdom United States of America Language English (EN) English (EN) Save cha",
+      "displayValue": "Location India Australia Austria Canada Global France Germany Hong Kong Ireland Japan Malaysia Netherlands Singapore United Kingdom United States of America Language English (EN) English (EN) Save cha",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Location India Australia Austria Canada Global France Germany Hong Kong Ireland Japan Malaysia Netherlands Singapore United Kingdom United States of America Language English (EN) English (EN) Save changes Get the Instarem app Scan the QR code to download the app",
+        "retrievedAt": "2026-08-03T12:58:49.662Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "instarem-nium.feature.sendPhoneEmail",
+      "providerId": "instarem-nium",
+      "field": "feature.sendPhoneEmail",
+      "value": "Add a recipient: Add a new recipient or choose from your phone contacts.",
+      "displayValue": "Add a recipient: Add a new recipient or choose from your phone contacts.",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Add a recipient: Add a new recipient or choose from your phone contacts.",
+        "retrievedAt": "2026-08-03T12:58:49.663Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "instarem-nium.feature.sendBank",
+      "providerId": "instarem-nium",
+      "field": "feature.sendBank",
+      "value": "Once we get your funds, we send them directly to your recipient’s bank account in their local currency.",
+      "displayValue": "Once we get your funds, we send them directly to your recipient’s bank account in their local currency.",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Once we get your funds, we send them directly to your recipient’s bank account in their local currency.",
+        "retrievedAt": "2026-08-03T12:58:49.663Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "instarem-nium.feature.requestMoney",
+      "providerId": "instarem-nium",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:instarem-nium",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:49.682Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "instarem-nium.feature.instantTransfers",
+      "providerId": "instarem-nium",
+      "field": "feature.instantTransfers",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:instarem-nium",
+        "title": "feature.instantTransfers",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:49.704Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    }
+  ],
+  "facts": {
+    "builtFor": {
+      "id": "instarem-nium.builtFor",
+      "providerId": "instarem-nium",
+      "field": "builtFor",
+      "value": "Expats, Businesses",
+      "displayValue": "Expats, Businesses",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "builtFor",
+        "quote": "What is an FCNR Deposit? A complete guide for NRIs In addition to international money transfer for individuals, Instarem offers cross border payment solutions for businesses.",
+        "retrievedAt": "2026-08-03T12:58:49.557Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "transferMethods": {
+      "id": "instarem-nium.transferMethods",
+      "providerId": "instarem-nium",
+      "field": "transferMethods",
+      "value": "Credit Card, Debit Card",
+      "displayValue": "Credit Card, Debit Card",
+      "source": {
+        "url": "officialPage:instarem-nium",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: Credit Card, Debit Card.",
+        "retrievedAt": "2026-08-03T12:58:49.627Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    "cost": {
+      "id": "instarem-nium.cost",
+      "providerId": "instarem-nium",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:instarem-nium",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:49.627Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "fxRate": {
+      "id": "instarem-nium.fxRate",
+      "providerId": "instarem-nium",
+      "field": "fxRate",
+      "value": "Mid-market exchange rate (no mark-ups) in most cases",
+      "displayValue": "Mid-market exchange rate (no mark-ups) in most cases",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "fxRate",
+        "quote": "While some banks and financial organisations may have unfavourable rates and hidden fees, Instarem offers competitive foreign exchange rates close to mid-market rates, with low fees.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "speed": {
+      "id": "instarem-nium.speed",
+      "providerId": "instarem-nium",
+      "field": "speed",
+      "value": "Most transfers clear in 1-2 days",
+      "displayValue": "Most transfers clear in 1-2 days",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "speed",
+        "quote": "Once we receive your funds, your transfer may be sent to your recipient instantly or may take up to 1-2 business days.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "security": {
+      "id": "instarem-nium.security",
+      "providerId": "instarem-nium",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "security",
+        "quote": "As a licensed and regulated service, Instarem requires certain details to verify your identity and safeguard your transactions.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "compliance": {
+      "id": "instarem-nium.compliance",
+      "providerId": "instarem-nium",
+      "field": "compliance",
+      "value": "Uncertain regulatory compliance",
+      "displayValue": "Uncertain regulatory compliance",
+      "source": {
+        "url": "llmClassifiedSignal:instarem-nium",
+        "title": "compliance",
+        "quote": "compliance classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:49.628Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    "support": {
+      "id": "instarem-nium.support",
+      "providerId": "instarem-nium",
+      "field": "support",
+      "value": "",
+      "displayValue": "",
+      "source": {
+        "url": "officialPage:instarem-nium",
+        "title": "support",
+        "quote": "No specific support channel (email/chat/call) documented on site.",
+        "retrievedAt": "2026-08-03T12:58:49.661Z"
+      },
+      "confidence": "low",
+      "method": "officialPage"
+    },
+    "feature.easyToUse": {
+      "id": "instarem-nium.feature.easyToUse",
+      "providerId": "instarem-nium",
+      "field": "feature.easyToUse",
+      "value": "Fast Most transfers are instant or same day Low-cost Competitive exchange rates and low fees Safe Licensed and regulated in 11 countries Transparent All costs are upfront, no hidden charges Rewarding",
+      "displayValue": "Fast Most transfers are instant or same day Low-cost Competitive exchange rates and low fees Safe Licensed and regulated in 11 countries Transparent All costs are upfront, no hidden charges Rewarding",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Fast Most transfers are instant or same day Low-cost Competitive exchange rates and low fees Safe Licensed and regulated in 11 countries Transparent All costs are upfront, no hidden charges Rewarding Earn rewards on every transaction One app for all your overseas transfers We believe in keeping things simple, fast, and low-cost.",
+        "retrievedAt": "2026-08-03T12:58:49.662Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.scanToPay": {
+      "id": "instarem-nium.feature.scanToPay",
+      "providerId": "instarem-nium",
+      "field": "feature.scanToPay",
+      "value": "Location India Australia Austria Canada Global France Germany Hong Kong Ireland Japan Malaysia Netherlands Singapore United Kingdom United States of America Language English (EN) English (EN) Save cha",
+      "displayValue": "Location India Australia Austria Canada Global France Germany Hong Kong Ireland Japan Malaysia Netherlands Singapore United Kingdom United States of America Language English (EN) English (EN) Save cha",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Location India Australia Austria Canada Global France Germany Hong Kong Ireland Japan Malaysia Netherlands Singapore United Kingdom United States of America Language English (EN) English (EN) Save changes Get the Instarem app Scan the QR code to download the app",
+        "retrievedAt": "2026-08-03T12:58:49.662Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.sendPhoneEmail": {
+      "id": "instarem-nium.feature.sendPhoneEmail",
+      "providerId": "instarem-nium",
+      "field": "feature.sendPhoneEmail",
+      "value": "Add a recipient: Add a new recipient or choose from your phone contacts.",
+      "displayValue": "Add a recipient: Add a new recipient or choose from your phone contacts.",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Add a recipient: Add a new recipient or choose from your phone contacts.",
+        "retrievedAt": "2026-08-03T12:58:49.663Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.sendBank": {
+      "id": "instarem-nium.feature.sendBank",
+      "providerId": "instarem-nium",
+      "field": "feature.sendBank",
+      "value": "Once we get your funds, we send them directly to your recipient’s bank account in their local currency.",
+      "displayValue": "Once we get your funds, we send them directly to your recipient’s bank account in their local currency.",
+      "source": {
+        "url": "https://www.instarem.com/gb/en/home/licenses",
+        "title": "International Money Transfer | Send Money Abroad | Instarem India",
+        "quote": "Once we get your funds, we send them directly to your recipient’s bank account in their local currency.",
+        "retrievedAt": "2026-08-03T12:58:49.663Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.requestMoney": {
+      "id": "instarem-nium.feature.requestMoney",
+      "providerId": "instarem-nium",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:instarem-nium",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:49.682Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.instantTransfers": {
+      "id": "instarem-nium.feature.instantTransfers",
+      "providerId": "instarem-nium",
+      "field": "feature.instantTransfers",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:instarem-nium",
+        "title": "feature.instantTransfers",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:49.704Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    }
+  }
+}

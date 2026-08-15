@@ -1,0 +1,428 @@
+{
+  "id": "aspora-formerly-vance",
+  "name": "Aspora (formerly Vance)",
+  "evidence": [
+    {
+      "id": "aspora-formerly-vance.builtFor",
+      "providerId": "aspora-formerly-vance",
+      "field": "builtFor",
+      "value": "Expats",
+      "displayValue": "Expats",
+      "source": {
+        "url": "managerSheet:aspora-formerly-vance",
+        "title": "builtFor",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:48.711Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "aspora-formerly-vance.transferMethods",
+      "providerId": "aspora-formerly-vance",
+      "field": "transferMethods",
+      "value": "ACH, Credit Card, Debit Card",
+      "displayValue": "ACH, Credit Card, Debit Card",
+      "source": {
+        "url": "officialPage:aspora-formerly-vance",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: ACH, Credit Card, Debit Card.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    {
+      "id": "aspora-formerly-vance.cost",
+      "providerId": "aspora-formerly-vance",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:aspora-formerly-vance",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "aspora-formerly-vance.fxRate",
+      "providerId": "aspora-formerly-vance",
+      "field": "fxRate",
+      "value": "Mid-market exchange rate (no mark-ups) in most cases",
+      "displayValue": "Mid-market exchange rate (no mark-ups) in most cases",
+      "source": {
+        "url": "managerSheet:aspora-formerly-vance",
+        "title": "fxRate",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "aspora-formerly-vance.speed",
+      "providerId": "aspora-formerly-vance",
+      "field": "speed",
+      "value": "Transfers usually take 7+ days",
+      "displayValue": "Transfers usually take 7+ days",
+      "source": {
+        "url": "llmClassifiedSignal:aspora-formerly-vance",
+        "title": "speed",
+        "quote": "speed classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "aspora-formerly-vance.security",
+      "providerId": "aspora-formerly-vance",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:aspora-formerly-vance",
+        "title": "security",
+        "quote": "Transaction monitoring systems designed to detect, prevent, and report suspicious activities, including those potentially linked to money laundering, terrorist financing, fraud, or other illegal activities;",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "aspora-formerly-vance.compliance",
+      "providerId": "aspora-formerly-vance",
+      "field": "compliance",
+      "value": "Licensed and regulated",
+      "displayValue": "Licensed and regulated",
+      "source": {
+        "url": "llmClassifiedSignal:aspora-formerly-vance",
+        "title": "compliance",
+        "quote": "Aspora is fully committed to complying with all Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT) regulations in every jurisdiction where it operates, including but not limited to compliance with the Bank Secrecy Act (BSA), the USA PATRIOT Act, and applicable regulations issued by the Financial Crimes Enforcement Network (FinCEN) in the United States.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "aspora-formerly-vance.support",
+      "providerId": "aspora-formerly-vance",
+      "field": "support",
+      "value": "",
+      "displayValue": "",
+      "source": {
+        "url": "officialPage:aspora-formerly-vance",
+        "title": "support",
+        "quote": "No specific support channel (email/chat/call) documented on site.",
+        "retrievedAt": "2026-08-03T12:58:48.763Z"
+      },
+      "confidence": "low",
+      "method": "officialPage"
+    },
+    {
+      "id": "aspora-formerly-vance.feature.easyToUse",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.easyToUse",
+      "value": "By accessing or using our website, mobile application (“ Aspora App”), or any other platforms and associated services (collectively, the “ Services”), you (the “ User”, “you”, or “your”) agree to be l",
+      "displayValue": "By accessing or using our website, mobile application (“ Aspora App”), or any other platforms and associated services (collectively, the “ Services”), you (the “ User”, “you”, or “your”) agree to be l",
+      "source": {
+        "url": "https://www.aspora.com/legal/terms-of-use/us/vance-money-services-llc",
+        "title": "Aspora Terms of use | Vance Money Services LLC",
+        "quote": "By accessing or using our website, mobile application (“Aspora App”), or any other platforms and associated services (collectively, the “Services”), you (the “User”, “you”, or “your”) agree to be legally bound by these Terms, together with our Privacy Policy, E-Sign Consent, CookiesPolicy and any additional terms or policies referenced herein or provided to you in connection with specific Services.",
+        "retrievedAt": "2026-08-03T12:58:48.764Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "aspora-formerly-vance.feature.scanToPay",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.scanToPay",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:aspora-formerly-vance",
+        "title": "feature.scanToPay",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:48.778Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "aspora-formerly-vance.feature.sendPhoneEmail",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.sendPhoneEmail",
+      "value": "The notice must include your full name, address, phone number, email address, and a clear statement that you wish to opt out of arbitration.",
+      "displayValue": "The notice must include your full name, address, phone number, email address, and a clear statement that you wish to opt out of arbitration.",
+      "source": {
+        "url": "https://www.aspora.com/legal/terms-of-use/us/vance-money-services-llc",
+        "title": "Aspora Terms of use | Vance Money Services LLC",
+        "quote": "The notice must include your full name, address, phone number, email address, and a clear statement that you wish to opt out of arbitration.",
+        "retrievedAt": "2026-08-03T12:58:48.782Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "aspora-formerly-vance.feature.sendBank",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.sendBank",
+      "value": "(t) Payment Instrument: Any authorized payment method linked to a User’ account, including but not limited to, bank accounts, credit cards, debit cards, or other digital payment methods as accepted by",
+      "displayValue": "(t) Payment Instrument: Any authorized payment method linked to a User’ account, including but not limited to, bank accounts, credit cards, debit cards, or other digital payment methods as accepted by",
+      "source": {
+        "url": "https://www.aspora.com/legal/terms-of-use/us/vance-money-services-llc",
+        "title": "Aspora Terms of use | Vance Money Services LLC",
+        "quote": "(t) Payment Instrument: Any authorized payment method linked to a User’ account, including but not limited to, bank accounts, credit cards, debit cards, or other digital payment methods as accepted by Aspora.",
+        "retrievedAt": "2026-08-03T12:58:48.784Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "aspora-formerly-vance.feature.requestMoney",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:aspora-formerly-vance",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:48.811Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "aspora-formerly-vance.feature.instantTransfers",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.instantTransfers",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:aspora-formerly-vance",
+        "title": "feature.instantTransfers",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:48.825Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    }
+  ],
+  "facts": {
+    "builtFor": {
+      "id": "aspora-formerly-vance.builtFor",
+      "providerId": "aspora-formerly-vance",
+      "field": "builtFor",
+      "value": "Expats",
+      "displayValue": "Expats",
+      "source": {
+        "url": "managerSheet:aspora-formerly-vance",
+        "title": "builtFor",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:48.711Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "transferMethods": {
+      "id": "aspora-formerly-vance.transferMethods",
+      "providerId": "aspora-formerly-vance",
+      "field": "transferMethods",
+      "value": "ACH, Credit Card, Debit Card",
+      "displayValue": "ACH, Credit Card, Debit Card",
+      "source": {
+        "url": "officialPage:aspora-formerly-vance",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: ACH, Credit Card, Debit Card.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    "cost": {
+      "id": "aspora-formerly-vance.cost",
+      "providerId": "aspora-formerly-vance",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:aspora-formerly-vance",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "fxRate": {
+      "id": "aspora-formerly-vance.fxRate",
+      "providerId": "aspora-formerly-vance",
+      "field": "fxRate",
+      "value": "Mid-market exchange rate (no mark-ups) in most cases",
+      "displayValue": "Mid-market exchange rate (no mark-ups) in most cases",
+      "source": {
+        "url": "managerSheet:aspora-formerly-vance",
+        "title": "fxRate",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "speed": {
+      "id": "aspora-formerly-vance.speed",
+      "providerId": "aspora-formerly-vance",
+      "field": "speed",
+      "value": "Transfers usually take 7+ days",
+      "displayValue": "Transfers usually take 7+ days",
+      "source": {
+        "url": "llmClassifiedSignal:aspora-formerly-vance",
+        "title": "speed",
+        "quote": "speed classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    "security": {
+      "id": "aspora-formerly-vance.security",
+      "providerId": "aspora-formerly-vance",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:aspora-formerly-vance",
+        "title": "security",
+        "quote": "Transaction monitoring systems designed to detect, prevent, and report suspicious activities, including those potentially linked to money laundering, terrorist financing, fraud, or other illegal activities;",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "compliance": {
+      "id": "aspora-formerly-vance.compliance",
+      "providerId": "aspora-formerly-vance",
+      "field": "compliance",
+      "value": "Licensed and regulated",
+      "displayValue": "Licensed and regulated",
+      "source": {
+        "url": "llmClassifiedSignal:aspora-formerly-vance",
+        "title": "compliance",
+        "quote": "Aspora is fully committed to complying with all Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT) regulations in every jurisdiction where it operates, including but not limited to compliance with the Bank Secrecy Act (BSA), the USA PATRIOT Act, and applicable regulations issued by the Financial Crimes Enforcement Network (FinCEN) in the United States.",
+        "retrievedAt": "2026-08-03T12:58:48.747Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "support": {
+      "id": "aspora-formerly-vance.support",
+      "providerId": "aspora-formerly-vance",
+      "field": "support",
+      "value": "",
+      "displayValue": "",
+      "source": {
+        "url": "officialPage:aspora-formerly-vance",
+        "title": "support",
+        "quote": "No specific support channel (email/chat/call) documented on site.",
+        "retrievedAt": "2026-08-03T12:58:48.763Z"
+      },
+      "confidence": "low",
+      "method": "officialPage"
+    },
+    "feature.easyToUse": {
+      "id": "aspora-formerly-vance.feature.easyToUse",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.easyToUse",
+      "value": "By accessing or using our website, mobile application (“ Aspora App”), or any other platforms and associated services (collectively, the “ Services”), you (the “ User”, “you”, or “your”) agree to be l",
+      "displayValue": "By accessing or using our website, mobile application (“ Aspora App”), or any other platforms and associated services (collectively, the “ Services”), you (the “ User”, “you”, or “your”) agree to be l",
+      "source": {
+        "url": "https://www.aspora.com/legal/terms-of-use/us/vance-money-services-llc",
+        "title": "Aspora Terms of use | Vance Money Services LLC",
+        "quote": "By accessing or using our website, mobile application (“Aspora App”), or any other platforms and associated services (collectively, the “Services”), you (the “User”, “you”, or “your”) agree to be legally bound by these Terms, together with our Privacy Policy, E-Sign Consent, CookiesPolicy and any additional terms or policies referenced herein or provided to you in connection with specific Services.",
+        "retrievedAt": "2026-08-03T12:58:48.764Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.scanToPay": {
+      "id": "aspora-formerly-vance.feature.scanToPay",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.scanToPay",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:aspora-formerly-vance",
+        "title": "feature.scanToPay",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:48.778Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.sendPhoneEmail": {
+      "id": "aspora-formerly-vance.feature.sendPhoneEmail",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.sendPhoneEmail",
+      "value": "The notice must include your full name, address, phone number, email address, and a clear statement that you wish to opt out of arbitration.",
+      "displayValue": "The notice must include your full name, address, phone number, email address, and a clear statement that you wish to opt out of arbitration.",
+      "source": {
+        "url": "https://www.aspora.com/legal/terms-of-use/us/vance-money-services-llc",
+        "title": "Aspora Terms of use | Vance Money Services LLC",
+        "quote": "The notice must include your full name, address, phone number, email address, and a clear statement that you wish to opt out of arbitration.",
+        "retrievedAt": "2026-08-03T12:58:48.782Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.sendBank": {
+      "id": "aspora-formerly-vance.feature.sendBank",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.sendBank",
+      "value": "(t) Payment Instrument: Any authorized payment method linked to a User’ account, including but not limited to, bank accounts, credit cards, debit cards, or other digital payment methods as accepted by",
+      "displayValue": "(t) Payment Instrument: Any authorized payment method linked to a User’ account, including but not limited to, bank accounts, credit cards, debit cards, or other digital payment methods as accepted by",
+      "source": {
+        "url": "https://www.aspora.com/legal/terms-of-use/us/vance-money-services-llc",
+        "title": "Aspora Terms of use | Vance Money Services LLC",
+        "quote": "(t) Payment Instrument: Any authorized payment method linked to a User’ account, including but not limited to, bank accounts, credit cards, debit cards, or other digital payment methods as accepted by Aspora.",
+        "retrievedAt": "2026-08-03T12:58:48.784Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.requestMoney": {
+      "id": "aspora-formerly-vance.feature.requestMoney",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:aspora-formerly-vance",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:48.811Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.instantTransfers": {
+      "id": "aspora-formerly-vance.feature.instantTransfers",
+      "providerId": "aspora-formerly-vance",
+      "field": "feature.instantTransfers",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:aspora-formerly-vance",
+        "title": "feature.instantTransfers",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:48.825Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    }
+  }
+}

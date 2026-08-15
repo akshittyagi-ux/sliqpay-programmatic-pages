@@ -24,6 +24,26 @@ type MetadataJson = {
   is_regulated?: boolean;
   regulation_bodies?: string[];
   data_gaps?: string[];
+  audience_segments?: {
+    expats?: boolean;
+    businesses?: boolean;
+    freelancers?: boolean;
+    tourists?: boolean;
+  };
+  audience_segments_quote?: string;
+  fee_pct_signal?: '1%' | '1-2%' | '2-3%' | '3-4%' | '4%+' | null;
+  fee_pct_quote?: string;
+  mid_market_rate_mentioned?: boolean;
+  mid_market_rate_quote?: string;
+  speed_signal?: 'fast_transfer' | 'same_or_next_business_day' | 'standard_3_5_days' | 'not_mentioned';
+  speed_quote?: string;
+  security_mentioned?: boolean;
+  security_quote?: string;
+  regulatory_signal?: {
+    fincen_or_nmls_or_mtl_mentioned?: boolean;
+    crypto_or_stablecoin_mentioned?: boolean;
+  };
+  regulatory_quote?: string;
   [key: string]: unknown;
 };
 
@@ -50,7 +70,7 @@ ${formatSheetMetadataForPrompt(sheetMeta)}
 
 Website content:
 ${combinedText}`,
-    maxTokens: 2500,
+    maxTokens: 3500,
   });
 
   await db.query(

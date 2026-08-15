@@ -1,0 +1,428 @@
+{
+  "id": "moneygram",
+  "name": "MoneyGram",
+  "evidence": [
+    {
+      "id": "moneygram.builtFor",
+      "providerId": "moneygram",
+      "field": "builtFor",
+      "value": "Expats",
+      "displayValue": "Expats",
+      "source": {
+        "url": "managerSheet:moneygram",
+        "title": "builtFor",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:52.434Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "moneygram.transferMethods",
+      "providerId": "moneygram",
+      "field": "transferMethods",
+      "value": "Debit Card",
+      "displayValue": "Debit Card",
+      "source": {
+        "url": "officialPage:moneygram",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: Debit Card.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    {
+      "id": "moneygram.cost",
+      "providerId": "moneygram",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:moneygram",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "moneygram.fxRate",
+      "providerId": "moneygram",
+      "field": "fxRate",
+      "value": "Charges hidden in FX rate",
+      "displayValue": "Charges hidden in FX rate",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "fxRate",
+        "quote": "fxRate classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "moneygram.speed",
+      "providerId": "moneygram",
+      "field": "speed",
+      "value": "Transfers are usually same day",
+      "displayValue": "Transfers are usually same day",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "speed",
+        "quote": "Get cash to your loved ones quickly.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "moneygram.security",
+      "providerId": "moneygram",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "security",
+        "quote": "We use advanced security, encryption, and fraud protection tools to help keep your transfers safe.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "moneygram.compliance",
+      "providerId": "moneygram",
+      "field": "compliance",
+      "value": "Uncertain regulatory compliance",
+      "displayValue": "Uncertain regulatory compliance",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "compliance",
+        "quote": "compliance classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "moneygram.support",
+      "providerId": "moneygram",
+      "field": "support",
+      "value": "",
+      "displayValue": "",
+      "source": {
+        "url": "officialPage:moneygram",
+        "title": "support",
+        "quote": "No specific support channel (email/chat/call) documented on site.",
+        "retrievedAt": "2026-08-03T12:58:52.442Z"
+      },
+      "confidence": "low",
+      "method": "officialPage"
+    },
+    {
+      "id": "moneygram.feature.easyToUse",
+      "providerId": "moneygram",
+      "field": "feature.easyToUse",
+      "value": "6on Google Play127K Reviews Move money faster with our app The Money Gram app makes it easy to send money in just a few taps.",
+      "displayValue": "6on Google Play127K Reviews Move money faster with our app The Money Gram app makes it easy to send money in just a few taps.",
+      "source": {
+        "url": "https://www.moneygram.com/us/en/home/licenses",
+        "title": "Send International Money Transfers Online from the U.S. | MoneyGram",
+        "quote": "6on Google Play127K ReviewsMove money faster with our appThe MoneyGram app makes it easy to send money in just a few taps.",
+        "retrievedAt": "2026-08-03T12:58:52.443Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "moneygram.feature.scanToPay",
+      "providerId": "moneygram",
+      "field": "feature.scanToPay",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.scanToPay",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.445Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "moneygram.feature.sendPhoneEmail",
+      "providerId": "moneygram",
+      "field": "feature.sendPhoneEmail",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.sendPhoneEmail",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.447Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "moneygram.feature.sendBank",
+      "providerId": "moneygram",
+      "field": "feature.sendBank",
+      "value": "Depending on where they live, they can pick up cash nearby, receive it straight to a bank account, debit card, or use a digital wallet.",
+      "displayValue": "Depending on where they live, they can pick up cash nearby, receive it straight to a bank account, debit card, or use a digital wallet.",
+      "source": {
+        "url": "https://www.moneygram.com/us/en/home/licenses",
+        "title": "Send International Money Transfers Online from the U.S. | MoneyGram",
+        "quote": "Depending on where they live, they can pick up cash nearby, receive it straight to a bank account, debit card, or use a digital wallet.",
+        "retrievedAt": "2026-08-03T12:58:52.447Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "moneygram.feature.requestMoney",
+      "providerId": "moneygram",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.449Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "moneygram.feature.instantTransfers",
+      "providerId": "moneygram",
+      "field": "feature.instantTransfers",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.instantTransfers",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.451Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    }
+  ],
+  "facts": {
+    "builtFor": {
+      "id": "moneygram.builtFor",
+      "providerId": "moneygram",
+      "field": "builtFor",
+      "value": "Expats",
+      "displayValue": "Expats",
+      "source": {
+        "url": "managerSheet:moneygram",
+        "title": "builtFor",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:52.434Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "transferMethods": {
+      "id": "moneygram.transferMethods",
+      "providerId": "moneygram",
+      "field": "transferMethods",
+      "value": "Debit Card",
+      "displayValue": "Debit Card",
+      "source": {
+        "url": "officialPage:moneygram",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: Debit Card.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    "cost": {
+      "id": "moneygram.cost",
+      "providerId": "moneygram",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:moneygram",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "fxRate": {
+      "id": "moneygram.fxRate",
+      "providerId": "moneygram",
+      "field": "fxRate",
+      "value": "Charges hidden in FX rate",
+      "displayValue": "Charges hidden in FX rate",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "fxRate",
+        "quote": "fxRate classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    "speed": {
+      "id": "moneygram.speed",
+      "providerId": "moneygram",
+      "field": "speed",
+      "value": "Transfers are usually same day",
+      "displayValue": "Transfers are usually same day",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "speed",
+        "quote": "Get cash to your loved ones quickly.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "security": {
+      "id": "moneygram.security",
+      "providerId": "moneygram",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "security",
+        "quote": "We use advanced security, encryption, and fraud protection tools to help keep your transfers safe.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "compliance": {
+      "id": "moneygram.compliance",
+      "providerId": "moneygram",
+      "field": "compliance",
+      "value": "Uncertain regulatory compliance",
+      "displayValue": "Uncertain regulatory compliance",
+      "source": {
+        "url": "llmClassifiedSignal:moneygram",
+        "title": "compliance",
+        "quote": "compliance classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:52.439Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    "support": {
+      "id": "moneygram.support",
+      "providerId": "moneygram",
+      "field": "support",
+      "value": "",
+      "displayValue": "",
+      "source": {
+        "url": "officialPage:moneygram",
+        "title": "support",
+        "quote": "No specific support channel (email/chat/call) documented on site.",
+        "retrievedAt": "2026-08-03T12:58:52.442Z"
+      },
+      "confidence": "low",
+      "method": "officialPage"
+    },
+    "feature.easyToUse": {
+      "id": "moneygram.feature.easyToUse",
+      "providerId": "moneygram",
+      "field": "feature.easyToUse",
+      "value": "6on Google Play127K Reviews Move money faster with our app The Money Gram app makes it easy to send money in just a few taps.",
+      "displayValue": "6on Google Play127K Reviews Move money faster with our app The Money Gram app makes it easy to send money in just a few taps.",
+      "source": {
+        "url": "https://www.moneygram.com/us/en/home/licenses",
+        "title": "Send International Money Transfers Online from the U.S. | MoneyGram",
+        "quote": "6on Google Play127K ReviewsMove money faster with our appThe MoneyGram app makes it easy to send money in just a few taps.",
+        "retrievedAt": "2026-08-03T12:58:52.443Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.scanToPay": {
+      "id": "moneygram.feature.scanToPay",
+      "providerId": "moneygram",
+      "field": "feature.scanToPay",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.scanToPay",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.445Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.sendPhoneEmail": {
+      "id": "moneygram.feature.sendPhoneEmail",
+      "providerId": "moneygram",
+      "field": "feature.sendPhoneEmail",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.sendPhoneEmail",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.447Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.sendBank": {
+      "id": "moneygram.feature.sendBank",
+      "providerId": "moneygram",
+      "field": "feature.sendBank",
+      "value": "Depending on where they live, they can pick up cash nearby, receive it straight to a bank account, debit card, or use a digital wallet.",
+      "displayValue": "Depending on where they live, they can pick up cash nearby, receive it straight to a bank account, debit card, or use a digital wallet.",
+      "source": {
+        "url": "https://www.moneygram.com/us/en/home/licenses",
+        "title": "Send International Money Transfers Online from the U.S. | MoneyGram",
+        "quote": "Depending on where they live, they can pick up cash nearby, receive it straight to a bank account, debit card, or use a digital wallet.",
+        "retrievedAt": "2026-08-03T12:58:52.447Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.requestMoney": {
+      "id": "moneygram.feature.requestMoney",
+      "providerId": "moneygram",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.449Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.instantTransfers": {
+      "id": "moneygram.feature.instantTransfers",
+      "providerId": "moneygram",
+      "field": "feature.instantTransfers",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:moneygram",
+        "title": "feature.instantTransfers",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:52.451Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    }
+  }
+}

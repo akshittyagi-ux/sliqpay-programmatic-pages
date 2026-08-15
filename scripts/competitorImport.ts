@@ -1,7 +1,8 @@
 import { db } from '../db/knowledgeDB';
 
 /** Manager's competitor list (share sheet: Anyone with the link → Viewer) */
-export const DEFAULT_GOOGLE_SHEET_ID = '1iMcfRuqJivLIvBDLffEkYAPbmm1XuTj8j4U810UtHqo';
+// export const DEFAULT_GOOGLE_SHEET_ID = '1iMcfRuqJivLIvBDLffEkYAPbmm1XuTj8j4U810UtHqo';
+export const DEFAULT_GOOGLE_SHEET_ID = '17H4u0hg0rOYCVFhtl6e2LMymK-FYdz1USJb_K6KCcWI';
 
 export function googleSheetExportUrl(sheetId: string, gid = '0'): string {
   return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;

@@ -1,0 +1,458 @@
+{
+  "id": "icici-money2india",
+  "name": "ICICI Money2India",
+  "evidence": [
+    {
+      "id": "icici-money2india.builtFor",
+      "providerId": "icici-money2india",
+      "field": "builtFor",
+      "value": "Expats",
+      "displayValue": "Expats",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "builtFor",
+        "quote": "Best for NRIs wanting to transfer money overseas securely",
+        "retrievedAt": "2026-08-03T12:58:54.606Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "icici-money2india.transferMethods",
+      "providerId": "icici-money2india",
+      "field": "transferMethods",
+      "value": "Credit Card, Debit Card, Wire, NEFT, RTGS, IMPS",
+      "displayValue": "Credit Card, Debit Card, Wire, NEFT, RTGS, IMPS",
+      "source": {
+        "url": "officialPage:icici-money2india",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: Credit Card, Debit Card, Wire, NEFT, RTGS, IMPS.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.cost",
+      "providerId": "icici-money2india",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:icici-money2india",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    {
+      "id": "icici-money2india.fxRate",
+      "providerId": "icici-money2india",
+      "field": "fxRate",
+      "value": "Charges hidden in FX rate",
+      "displayValue": "Charges hidden in FX rate",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "fxRate",
+        "quote": "fxRate classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "icici-money2india.speed",
+      "providerId": "icici-money2india",
+      "field": "speed",
+      "value": "Most transfers clear in 1-2 days",
+      "displayValue": "Most transfers clear in 1-2 days",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "speed",
+        "quote": "Instant transfers available for select banks. Others may take 1-2 business days.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "icici-money2india.security",
+      "providerId": "icici-money2india",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "security",
+        "quote": "We take your security seriously! 2-factor authentication End-to-end 256-bit encryption",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "icici-money2india.compliance",
+      "providerId": "icici-money2india",
+      "field": "compliance",
+      "value": "Uncertain regulatory compliance",
+      "displayValue": "Uncertain regulatory compliance",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "compliance",
+        "quote": "compliance classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    {
+      "id": "icici-money2india.support",
+      "providerId": "icici-money2india",
+      "field": "support",
+      "value": "Email, Call",
+      "displayValue": "Email, Call",
+      "source": {
+        "url": "officialPage:icici-money2india",
+        "title": "support",
+        "quote": "Support channels detected on site: Email, Call.",
+        "retrievedAt": "2026-08-03T12:58:54.674Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.feature.easyToUse",
+      "providerId": "icici-money2india",
+      "field": "feature.easyToUse",
+      "value": "Customers must have a PAN to claim tax exemptions and can submit these forms online via Net Banking or the ICICI Bank’s i Mobile app.",
+      "displayValue": "Customers must have a PAN to claim tax exemptions and can submit these forms online via Net Banking or the ICICI Bank’s i Mobile app.",
+      "source": {
+        "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+        "title": "FD Interest Rates - Check Latest Fixed Deposit Rates | ICICI Bank",
+        "quote": "Customers must have a PAN to claim tax exemptions and can submit these forms online via Net Banking or the ICICI Bank’s iMobile app.",
+        "retrievedAt": "2026-08-03T12:58:54.675Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.feature.scanToPay",
+      "providerId": "icici-money2india",
+      "field": "feature.scanToPay",
+      "value": "UPI VIA IMOBILE Money Transfer Money2india UPI UPI for NR Is: Secure UPI payment app for NR Is - ICICI Bank’s i Mobile app Scan any QR code, pay to a UPI ID, or transfer to an Indian account with your",
+      "displayValue": "UPI VIA IMOBILE Money Transfer Money2india UPI UPI for NR Is: Secure UPI payment app for NR Is - ICICI Bank’s i Mobile app Scan any QR code, pay to a UPI ID, or transfer to an Indian account with your",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/money-transfer/money2india/upi",
+        "title": "UPI for NRI - Instant & Secure UPI Payments for NRI | ICICI Bank",
+        "quote": "UPI VIA IMOBILE Money Transfer Money2india UPI UPI for NRIs: Secure UPI payment app for NRIs - ICICI Bank’s iMobile app Scan any QR code, pay to a UPI ID, or transfer to an Indian account with your registered Indian / International Mobile Number– fast and secure.",
+        "retrievedAt": "2026-08-03T12:58:54.676Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.feature.sendPhoneEmail",
+      "providerId": "icici-money2india",
+      "field": "feature.sendPhoneEmail",
+      "value": "Virgin Islands Uganda UAE United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican Venezuela Vietnam Wallis And Futuna Western Sahara Yemen Zambia Zimbabwe Confirm Mobile Number* + Email* Selec",
+      "displayValue": "Virgin Islands Uganda UAE United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican Venezuela Vietnam Wallis And Futuna Western Sahara Yemen Zambia Zimbabwe Confirm Mobile Number* + Email* Selec",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/loans/balance-transfer",
+        "title": "NRI Home Loan Balance Transfer at Low Interest Rates | ICICI Bank",
+        "quote": "VirginIslands Uganda UAE United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican Venezuela Vietnam Wallis And Futuna Western Sahara Yemen Zambia Zimbabwe Confirm Mobile Number* + Email* Select Product Type* Select Product Type Close Dropdown Select Product Home Loan Loan Against Property Top Up Loan Balance Transfer Office Premise Loan Existing Home Loan Enquiry Confirm Mobile Number* Email* Select Product Type* Select Product Type Close Dropdown Select Product Home Loan Home Overdraft B",
+        "retrievedAt": "2026-08-03T12:58:54.678Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.feature.sendBank",
+      "providerId": "icici-money2india",
+      "field": "feature.sendBank",
+      "value": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "displayValue": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/money-transfer/money2india/upi",
+        "title": "UPI for NRI - Instant & Secure UPI Payments for NRI | ICICI Bank",
+        "quote": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NRIs Fast and secure payments Carry out instantaneous payments from your ICICI Bank account backed by advanced bank-grade security using the ICICI Bank’s iMobile app Default sender or receiver facility Now with one UPI ID for all your accounts, set your desired account as the default account to receive and pay through the UPI ID.",
+        "retrievedAt": "2026-08-03T12:58:54.679Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.feature.requestMoney",
+      "providerId": "icici-money2india",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:icici-money2india",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:54.697Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    {
+      "id": "icici-money2india.feature.instantTransfers",
+      "providerId": "icici-money2india",
+      "field": "feature.instantTransfers",
+      "value": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "displayValue": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/money-transfer/money2india/upi",
+        "title": "UPI for NRI - Instant & Secure UPI Payments for NRI | ICICI Bank",
+        "quote": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NRIs Fast and secure payments Carry out instantaneous payments from your ICICI Bank account backed by advanced bank-grade security using the ICICI Bank’s iMobile app Default sender or receiver facility Now with one UPI ID for all your accounts, set your desired account as the default account to receive and pay through the UPI ID.",
+        "retrievedAt": "2026-08-03T12:58:54.698Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    {
+      "id": "icici-money2india.transferFee",
+      "providerId": "icici-money2india",
+      "field": "transferFee",
+      "value": "0",
+      "displayValue": "0",
+      "source": {
+        "url": "structuredMetadata:icici-money2india",
+        "title": "typical_fee_usd_to_inr",
+        "quote": "typical_fee_usd_to_inr: 0",
+        "retrievedAt": "2026-08-03T12:58:54.698Z"
+      },
+      "confidence": "medium",
+      "method": "structuredMetadata"
+    }
+  ],
+  "facts": {
+    "builtFor": {
+      "id": "icici-money2india.builtFor",
+      "providerId": "icici-money2india",
+      "field": "builtFor",
+      "value": "Expats",
+      "displayValue": "Expats",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "builtFor",
+        "quote": "Best for NRIs wanting to transfer money overseas securely",
+        "retrievedAt": "2026-08-03T12:58:54.606Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "transferMethods": {
+      "id": "icici-money2india.transferMethods",
+      "providerId": "icici-money2india",
+      "field": "transferMethods",
+      "value": "Credit Card, Debit Card, Wire, NEFT, RTGS, IMPS",
+      "displayValue": "Credit Card, Debit Card, Wire, NEFT, RTGS, IMPS",
+      "source": {
+        "url": "officialPage:icici-money2india",
+        "title": "transferMethods",
+        "quote": "Transfer methods detected on site: Credit Card, Debit Card, Wire, NEFT, RTGS, IMPS.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    "cost": {
+      "id": "icici-money2india.cost",
+      "providerId": "icici-money2india",
+      "field": "cost",
+      "value": "Low (1-2%)",
+      "displayValue": "Low (1-2%)",
+      "source": {
+        "url": "managerSheet:icici-money2india",
+        "title": "cost",
+        "quote": "Manually curated canonical value.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "high",
+      "method": "managerSheet"
+    },
+    "fxRate": {
+      "id": "icici-money2india.fxRate",
+      "providerId": "icici-money2india",
+      "field": "fxRate",
+      "value": "Charges hidden in FX rate",
+      "displayValue": "Charges hidden in FX rate",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "fxRate",
+        "quote": "fxRate classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    "speed": {
+      "id": "icici-money2india.speed",
+      "providerId": "icici-money2india",
+      "field": "speed",
+      "value": "Most transfers clear in 1-2 days",
+      "displayValue": "Most transfers clear in 1-2 days",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "speed",
+        "quote": "Instant transfers available for select banks. Others may take 1-2 business days.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "security": {
+      "id": "icici-money2india.security",
+      "providerId": "icici-money2india",
+      "field": "security",
+      "value": "Standard data security best practices",
+      "displayValue": "Standard data security best practices",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "security",
+        "quote": "We take your security seriously! 2-factor authentication End-to-end 256-bit encryption",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "medium",
+      "method": "llmClassifiedSignal"
+    },
+    "compliance": {
+      "id": "icici-money2india.compliance",
+      "providerId": "icici-money2india",
+      "field": "compliance",
+      "value": "Uncertain regulatory compliance",
+      "displayValue": "Uncertain regulatory compliance",
+      "source": {
+        "url": "llmClassifiedSignal:icici-money2india",
+        "title": "compliance",
+        "quote": "compliance classified from structured website signals.",
+        "retrievedAt": "2026-08-03T12:58:54.653Z"
+      },
+      "confidence": "low",
+      "method": "llmClassifiedSignal"
+    },
+    "support": {
+      "id": "icici-money2india.support",
+      "providerId": "icici-money2india",
+      "field": "support",
+      "value": "Email, Call",
+      "displayValue": "Email, Call",
+      "source": {
+        "url": "officialPage:icici-money2india",
+        "title": "support",
+        "quote": "Support channels detected on site: Email, Call.",
+        "retrievedAt": "2026-08-03T12:58:54.674Z"
+      },
+      "confidence": "medium",
+      "method": "officialPage"
+    },
+    "feature.easyToUse": {
+      "id": "icici-money2india.feature.easyToUse",
+      "providerId": "icici-money2india",
+      "field": "feature.easyToUse",
+      "value": "Customers must have a PAN to claim tax exemptions and can submit these forms online via Net Banking or the ICICI Bank’s i Mobile app.",
+      "displayValue": "Customers must have a PAN to claim tax exemptions and can submit these forms online via Net Banking or the ICICI Bank’s i Mobile app.",
+      "source": {
+        "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+        "title": "FD Interest Rates - Check Latest Fixed Deposit Rates | ICICI Bank",
+        "quote": "Customers must have a PAN to claim tax exemptions and can submit these forms online via Net Banking or the ICICI Bank’s iMobile app.",
+        "retrievedAt": "2026-08-03T12:58:54.675Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.scanToPay": {
+      "id": "icici-money2india.feature.scanToPay",
+      "providerId": "icici-money2india",
+      "field": "feature.scanToPay",
+      "value": "UPI VIA IMOBILE Money Transfer Money2india UPI UPI for NR Is: Secure UPI payment app for NR Is - ICICI Bank’s i Mobile app Scan any QR code, pay to a UPI ID, or transfer to an Indian account with your",
+      "displayValue": "UPI VIA IMOBILE Money Transfer Money2india UPI UPI for NR Is: Secure UPI payment app for NR Is - ICICI Bank’s i Mobile app Scan any QR code, pay to a UPI ID, or transfer to an Indian account with your",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/money-transfer/money2india/upi",
+        "title": "UPI for NRI - Instant & Secure UPI Payments for NRI | ICICI Bank",
+        "quote": "UPI VIA IMOBILE Money Transfer Money2india UPI UPI for NRIs: Secure UPI payment app for NRIs - ICICI Bank’s iMobile app Scan any QR code, pay to a UPI ID, or transfer to an Indian account with your registered Indian / International Mobile Number– fast and secure.",
+        "retrievedAt": "2026-08-03T12:58:54.676Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.sendPhoneEmail": {
+      "id": "icici-money2india.feature.sendPhoneEmail",
+      "providerId": "icici-money2india",
+      "field": "feature.sendPhoneEmail",
+      "value": "Virgin Islands Uganda UAE United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican Venezuela Vietnam Wallis And Futuna Western Sahara Yemen Zambia Zimbabwe Confirm Mobile Number* + Email* Selec",
+      "displayValue": "Virgin Islands Uganda UAE United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican Venezuela Vietnam Wallis And Futuna Western Sahara Yemen Zambia Zimbabwe Confirm Mobile Number* + Email* Selec",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/loans/balance-transfer",
+        "title": "NRI Home Loan Balance Transfer at Low Interest Rates | ICICI Bank",
+        "quote": "VirginIslands Uganda UAE United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican Venezuela Vietnam Wallis And Futuna Western Sahara Yemen Zambia Zimbabwe Confirm Mobile Number* + Email* Select Product Type* Select Product Type Close Dropdown Select Product Home Loan Loan Against Property Top Up Loan Balance Transfer Office Premise Loan Existing Home Loan Enquiry Confirm Mobile Number* Email* Select Product Type* Select Product Type Close Dropdown Select Product Home Loan Home Overdraft B",
+        "retrievedAt": "2026-08-03T12:58:54.678Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.sendBank": {
+      "id": "icici-money2india.feature.sendBank",
+      "providerId": "icici-money2india",
+      "field": "feature.sendBank",
+      "value": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "displayValue": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/money-transfer/money2india/upi",
+        "title": "UPI for NRI - Instant & Secure UPI Payments for NRI | ICICI Bank",
+        "quote": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NRIs Fast and secure payments Carry out instantaneous payments from your ICICI Bank account backed by advanced bank-grade security using the ICICI Bank’s iMobile app Default sender or receiver facility Now with one UPI ID for all your accounts, set your desired account as the default account to receive and pay through the UPI ID.",
+        "retrievedAt": "2026-08-03T12:58:54.679Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "feature.requestMoney": {
+      "id": "icici-money2india.feature.requestMoney",
+      "providerId": "icici-money2india",
+      "field": "feature.requestMoney",
+      "value": false,
+      "displayValue": "Unavailable",
+      "source": {
+        "url": "structuredMetadata:icici-money2india",
+        "title": "feature.requestMoney",
+        "quote": "Feature not documented in provider delivery methods or website sources.",
+        "retrievedAt": "2026-08-03T12:58:54.697Z"
+      },
+      "confidence": "low",
+      "method": "structuredMetadata"
+    },
+    "feature.instantTransfers": {
+      "id": "icici-money2india.feature.instantTransfers",
+      "providerId": "icici-money2india",
+      "field": "feature.instantTransfers",
+      "value": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "displayValue": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NR Is Fast and secure payments Carry out instantaneous payments from your ICICI",
+      "source": {
+        "url": "https://www.icicibank.com/nri-banking/money-transfer/money2india/upi",
+        "title": "UPI for NRI - Instant & Secure UPI Payments for NRI | ICICI Bank",
+        "quote": "Read Less Real time bank-level secured payments 24x7 support Know more UPI VIA IMOBILE Features and benefits of UPI for NRIs Fast and secure payments Carry out instantaneous payments from your ICICI Bank account backed by advanced bank-grade security using the ICICI Bank’s iMobile app Default sender or receiver facility Now with one UPI ID for all your accounts, set your desired account as the default account to receive and pay through the UPI ID.",
+        "retrievedAt": "2026-08-03T12:58:54.698Z"
+      },
+      "confidence": "high",
+      "method": "officialPage"
+    },
+    "transferFee": {
+      "id": "icici-money2india.transferFee",
+      "providerId": "icici-money2india",
+      "field": "transferFee",
+      "value": "0",
+      "displayValue": "0",
+      "source": {
+        "url": "structuredMetadata:icici-money2india",
+        "title": "typical_fee_usd_to_inr",
+        "quote": "typical_fee_usd_to_inr: 0",
+        "retrievedAt": "2026-08-03T12:58:54.698Z"
+      },
+      "confidence": "medium",
+      "method": "structuredMetadata"
+    }
+  }
+}
