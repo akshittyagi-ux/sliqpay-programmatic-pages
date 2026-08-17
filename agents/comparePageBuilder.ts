@@ -15,6 +15,7 @@ type CompetitorBundle = {
   sheetMeta: Record<string, string>;
   rawMetadata: Record<string, unknown>;
   pages: { url: string; title: string | null; clean_text: string }[];
+  retrievedAt: string;
 };
 
 const DEFAULT_CORRIDOR = {
@@ -82,7 +83,8 @@ export async function loadCompetitorBundle(slug: string): Promise<CompetitorBund
     slug: string;
     name: string;
     website_url: string | null;
-  }>(`SELECT id, slug, name, website_url FROM competitors WHERE slug = $1`, [slug]);
+    last_scraped_at: Date | null;
+  }>(`SELECT id, slug, name, website_url, last_scraped_at FROM competitors WHERE slug = $1`, [slug]);
 
   const competitor = rows[0];
   if (!competitor) {
@@ -124,6 +126,11 @@ export async function loadCompetitorBundle(slug: string): Promise<CompetitorBund
       regulation_bodies: metaRow?.regulation_bodies ?? null,
     }),
     pages,
+    // Falls back to "now" only for a competitor that has literally never been
+    // scraped — every real refresh stamps last_scraped_at, so evidence for
+    // untouched competitors keeps citing the date their data actually came from
+    // instead of the date some later, unrelated export happened to run.
+    retrievedAt: (competitor.last_scraped_at ?? new Date()).toISOString(),
   };
 }
 
@@ -157,6 +164,7 @@ export async function buildComparePage(slug: string, providerSlugs: string[]) {
       sheetMeta: bundle.sheetMeta,
       rawMetadata: bundle.rawMetadata,
       pages: bundle.pages,
+      retrievedAt: bundle.retrievedAt,
     })
   );
 

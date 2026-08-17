@@ -29,6 +29,12 @@ export type CompetitorEvidenceInput = {
   sheetMeta: Record<string, string>;
   rawMetadata: Record<string, unknown>;
   pages: KnowledgePage[];
+  // When this competitor's underlying data was actually last scraped —
+  // NOT "now". Evidence gets re-exported for every live competitor on every
+  // pipeline run regardless of whether that competitor was touched, so
+  // stamping wall-clock time here would make every provider file's diff
+  // look like a real refresh even when nothing changed.
+  retrievedAt: string;
 };
 
 const FEATURE_PATTERNS: Record<string, string[]> = {
@@ -285,6 +291,7 @@ function findPageEvidence(
   field: string,
   pages: KnowledgePage[],
   terms: string[],
+  retrievedAt: string,
   metadataDisplayValue?: string,
   confidence: EvidenceConfidence = 'high'
 ): EvidenceRef | null {
@@ -312,7 +319,7 @@ function findPageEvidence(
         url: page.url,
         title: page.title ?? undefined,
         quote: rawQuote,
-        retrievedAt: new Date().toISOString(),
+        retrievedAt,
       },
       confidence,
       method: 'officialPage',
@@ -327,7 +334,8 @@ function createMetadataEvidence(
   field: string,
   value: unknown,
   key: string,
-  method: EvidenceMethod
+  method: EvidenceMethod,
+  retrievedAt: string
 ): EvidenceRef {
   const textValue = stringifyValue(value);
   return {
@@ -340,7 +348,7 @@ function createMetadataEvidence(
       url: `${method}:${providerId}`,
       title: key,
       quote: `${key}: ${textValue}`,
-      retrievedAt: new Date().toISOString(),
+      retrievedAt,
     },
     confidence: method === 'structuredMetadata' ? 'medium' : 'low',
     method,
@@ -365,7 +373,8 @@ function evidenceFromComplianceMetadata(input: CompetitorEvidenceInput): Evidenc
       'compliance',
       bodies.value,
       bodies.key,
-      'structuredMetadata'
+      'structuredMetadata',
+      input.retrievedAt
     );
   }
 
@@ -380,7 +389,8 @@ function evidenceFromComplianceMetadata(input: CompetitorEvidenceInput): Evidenc
       'compliance',
       sheetBodies.value,
       sheetBodies.key,
-      'managerSheet'
+      'managerSheet',
+      input.retrievedAt
     );
   }
 
@@ -392,7 +402,8 @@ function evidenceFromComplianceMetadata(input: CompetitorEvidenceInput): Evidenc
         'compliance',
         true,
         regulated.key,
-        'structuredMetadata'
+        'structuredMetadata',
+        input.retrievedAt
       ),
       displayValue: 'Licensed and regulated money transfer provider',
     };
@@ -406,7 +417,8 @@ function evidenceFromComplianceMetadata(input: CompetitorEvidenceInput): Evidenc
         'compliance',
         true,
         sheetRegulated.key,
-        'managerSheet'
+        'managerSheet',
+        input.retrievedAt
       ),
       displayValue: 'Licensed and regulated money transfer provider',
     };
@@ -440,7 +452,7 @@ function evidenceFromSources(
     const complianceMetadata = evidenceFromComplianceMetadata(input);
     if (complianceMetadata) {
       const pageEvidence = findPageEvidence(
-        input.id, field, input.pages, terms,
+        input.id, field, input.pages, terms, input.retrievedAt,
         complianceMetadata.displayValue
       );
       return pageEvidence ?? complianceMetadata;
@@ -448,7 +460,7 @@ function evidenceFromSources(
   }
 
   const displayHint = metadataDisplayForField(input, field, metadataKeys);
-  const pageEvidence = findPageEvidence(input.id, field, input.pages, terms, displayHint);
+  const pageEvidence = findPageEvidence(input.id, field, input.pages, terms, input.retrievedAt, displayHint);
   if (pageEvidence) return pageEvidence;
 
   const metadataValue = findMetadataValue(input.rawMetadata, metadataKeys);
@@ -458,13 +470,14 @@ function evidenceFromSources(
       field,
       metadataValue.value,
       metadataValue.key,
-      'structuredMetadata'
+      'structuredMetadata',
+      input.retrievedAt
     );
   }
 
   const sheetValue = findMetadataValue(input.sheetMeta, metadataKeys);
   if (sheetValue) {
-    return createMetadataEvidence(input.id, field, sheetValue.value, sheetValue.key, 'managerSheet');
+    return createMetadataEvidence(input.id, field, sheetValue.value, sheetValue.key, 'managerSheet', input.retrievedAt);
   }
 
   if (FIELD_DISPLAY_FALLBACKS[field]) {
@@ -478,7 +491,7 @@ function evidenceFromSources(
         url: `structuredMetadata:${input.id}`,
         title: field,
         quote: `${field}: not found in structured metadata or scraped pages`,
-        retrievedAt: new Date().toISOString(),
+        retrievedAt: input.retrievedAt,
       },
       confidence: 'low',
       method: 'structuredMetadata',
@@ -491,7 +504,7 @@ function evidenceFromSources(
 export const FEATURE_NOT_MENTIONED_QUOTE =
   'Feature not documented in provider delivery methods or website sources.';
 
-function defaultMissingFeatureEvidence(providerId: string, field: string): EvidenceRef {
+function defaultMissingFeatureEvidence(providerId: string, field: string, retrievedAt: string): EvidenceRef {
   return {
     id: evidenceId(providerId, field),
     providerId,
@@ -502,7 +515,7 @@ function defaultMissingFeatureEvidence(providerId: string, field: string): Evide
       url: `structuredMetadata:${providerId}`,
       title: field,
       quote: FEATURE_NOT_MENTIONED_QUOTE,
-      retrievedAt: new Date().toISOString(),
+      retrievedAt,
     },
     confidence: 'low',
     method: 'structuredMetadata',
@@ -527,7 +540,8 @@ function inferFeatureEvidence(
         featureField,
         true,
         key,
-        source === input.rawMetadata ? 'structuredMetadata' : 'managerSheet'
+        source === input.rawMetadata ? 'structuredMetadata' : 'managerSheet',
+        input.retrievedAt
       );
     }
   }
@@ -552,7 +566,8 @@ function addPriceEvidence(input: CompetitorEvidenceInput, evidence: Map<string, 
         field,
         numericValue,
         picked.key,
-        metadataValue ? 'structuredMetadata' : 'managerSheet'
+        metadataValue ? 'structuredMetadata' : 'managerSheet',
+        input.retrievedAt
       )
     );
   }
@@ -573,7 +588,7 @@ function governedFieldEvidence(input: CompetitorEvidenceInput, field: GovernedFi
       url: `${method}:${input.id}`,
       title: field,
       quote: result.quote || `${field} classified from structured website signals.`,
-      retrievedAt: new Date().toISOString(),
+      retrievedAt: input.retrievedAt,
     },
     confidence: result.origin === 'override' ? 'high' : result.quote ? 'medium' : 'low',
     method,
@@ -597,7 +612,7 @@ function supportChannelEvidence(input: CompetitorEvidenceInput): EvidenceRef {
         anyChannelMentioned
           ? `Support channels detected on site: ${channelsText}.`
           : 'No specific support channel (email/chat/call) documented on site.',
-      retrievedAt: new Date().toISOString(),
+      retrievedAt: input.retrievedAt,
     },
     confidence: anyChannelMentioned ? 'medium' : 'low',
     method: 'officialPage',
@@ -617,7 +632,7 @@ function transferMethodsEvidence(input: CompetitorEvidenceInput): EvidenceRef {
         url: `managerSheet:${input.id}`,
         title: 'transferMethods',
         quote: 'Manually curated canonical value.',
-        retrievedAt: new Date().toISOString(),
+        retrievedAt: input.retrievedAt,
       },
       confidence: 'high',
       method: 'managerSheet',
@@ -642,7 +657,7 @@ function transferMethodsEvidence(input: CompetitorEvidenceInput): EvidenceRef {
       url: `officialPage:${input.id}`,
       title: 'transferMethods',
       quote: `Transfer methods detected on site: ${methodsText}.`,
-      retrievedAt: new Date().toISOString(),
+      retrievedAt: input.retrievedAt,
     },
     confidence: 'medium',
     method: 'officialPage',
@@ -681,7 +696,7 @@ export function extractProviderEvidence(input: CompetitorEvidenceInput): Provide
       continue;
     }
     if (input.id !== 'sliq') {
-      addEvidence(evidence, defaultMissingFeatureEvidence(input.id, field));
+      addEvidence(evidence, defaultMissingFeatureEvidence(input.id, field, input.retrievedAt));
     }
   }
 
@@ -695,6 +710,12 @@ export function extractProviderEvidence(input: CompetitorEvidenceInput): Provide
   };
 }
 
+// Sliq's own facts are hardcoded product truth, not scraped — there's no
+// "last scraped" date to cite, so use a fixed placeholder instead of "now".
+// Otherwise sliq.json would show a spurious diff on every export run even
+// though these facts never change.
+const SLIQ_CANONICAL_RETRIEVED_AT = '2026-01-01T00:00:00.000Z';
+
 function canonicalEvidence(field: string, value: string | number | boolean, quote: string): EvidenceRef {
   return {
     id: evidenceId('sliq', field),
@@ -706,7 +727,7 @@ function canonicalEvidence(field: string, value: string | number | boolean, quot
       url: 'sliqpay:canonical-facts',
       title: 'Sliq Pay canonical product facts',
       quote,
-      retrievedAt: new Date().toISOString(),
+      retrievedAt: SLIQ_CANONICAL_RETRIEVED_AT,
     },
     confidence: 'high',
     method: 'sliqCanonicalFacts',

@@ -44,6 +44,7 @@ async function main() {
       sheetMeta: bundle.sheetMeta,
       rawMetadata: bundle.rawMetadata,
       pages: bundle.pages,
+      retrievedAt: bundle.retrievedAt,
     });
 
     const outPath = path.join(OUTPUT_DIR, `${slug}.json`);

@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync, existsSync } from 'fs';
 import path from 'path';
 import 'dotenv/config';
 import { db, pool } from '../db/knowledgeDB';
@@ -57,6 +57,7 @@ async function main() {
         sheetMeta: bundle.sheetMeta,
         rawMetadata: bundle.rawMetadata,
         pages: bundle.pages,
+        retrievedAt: bundle.retrievedAt,
       });
       writeFileSync(
         path.join(PROVIDERS_DIR, `${slug}.json`),
@@ -68,6 +69,15 @@ async function main() {
     } catch (error) {
       failedSlugs.push({ slug, error: (error as Error).message });
       console.warn(`Skipped [${slug}]: ${(error as Error).message}`);
+      // A competitor failing today's stricter/data-quality check shouldn't
+      // vanish from the site's picker if it already has a working evidence
+      // file from a past successful export — that page still renders fine
+      // (Sliq-website reads providers/*.json directly, not gated on this
+      // index), it's just not getting refreshed today. Keep it listed.
+      if (existsSync(path.join(PROVIDERS_DIR, `${slug}.json`))) {
+        availableSlugs.push(slug);
+        console.log(`  (keeping previously-exported evidence for [${slug}])`);
+      }
     }
   }
 
