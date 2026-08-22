@@ -51,7 +51,7 @@ export const COST_VALUES = [
 
 export const FX_RATE_VALUES = [
   'Mid-market exchange rate (no mark-ups) in most cases',
-  'Charges hidden in FX rate',
+  'Charges maybe hidden in FX rate',
 ] as const;
 
 export const SPEED_VALUES = [
@@ -582,7 +582,7 @@ function classifyCost(signals: ClassificationSignals): string {
 function classifyFxRate(signals: ClassificationSignals): string {
   return signals.midMarketMentioned
     ? 'Mid-market exchange rate (no mark-ups) in most cases'
-    : 'Charges hidden in FX rate';
+    : 'Charges maybe hidden in FX rate';
 }
 
 function classifySpeed(signals: ClassificationSignals): string {
@@ -683,14 +683,17 @@ export function classifyGovernedField(
 }
 
 // Section 4 (feature grid): status is derived from whether evidence of the
-// feature was found on the competitor's site, with two hard overrides that
-// ignore the evidence entirely (scanToPay is Sliq-only; sendBank is universal).
+// feature was found on the competitor's site, with hard overrides that ignore
+// the evidence entirely (scanToPay is Sliq-only; sendBank is universal;
+// easyToUse is subjective, so competitors always show the neutral "?" rather
+// than us asserting a yes or no).
 export function classifyFeatureStatus(
   providerId: string,
   featureId: string,
   mentioned: boolean
 ): CompareStatus {
   if (providerId === 'sliq') return 'positive';
+  if (featureId === 'easyToUse') return 'neutral';
   if (featureId === 'scanToPay') return 'negative';
   if (featureId === 'sendBank') return 'positive';
   return mentioned ? 'neutral' : 'negative';

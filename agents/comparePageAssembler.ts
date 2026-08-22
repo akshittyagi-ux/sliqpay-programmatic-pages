@@ -345,7 +345,7 @@ export function assembleComparePageDocument(input: {
     priceSection: {
       heading: 'Compare Costs\nBefore You Send',
       description:
-        'Compare provider costs for the selected USD to INR corridor using verified pricing evidence collected before publication.\n\nThe table is generated from structured source-backed data so fees, exchange rates, and total costs stay aligned with the comparison content.',
+        'Tell us how much you want them to receive and instantly see the rate, every fee and exactly what it costs you. Side by side with everyone else so you can see who\'s the cheapest. No fine print, no surprises.',
     },
     priceComparison: {
       heading: 'Compare Costs\nBefore You Send',
