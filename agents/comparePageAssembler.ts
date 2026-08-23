@@ -11,6 +11,7 @@ import {
   GOVERNED_FIELDS,
   statusForGovernedValue,
   classifyFeatureStatus,
+  stripCostPercentage,
   type GovernedField,
 } from './compareFieldRules';
 import { FEATURE_NOT_MENTIONED_QUOTE } from './compareEvidenceExtractor';
@@ -144,8 +145,9 @@ function buildComparisonProvider(bundle: ProviderEvidenceBundle) {
     showStoreButtons: highlighted ? true : undefined,
     cells: COMPARISON_ROWS.map((row) => {
       const fact = requireFact(bundle, row.id);
+      const text = row.id === 'cost' && !highlighted ? stripCostPercentage(display(fact)) : display(fact);
       return {
-        text: display(fact),
+        text,
         icon: comparisonCellStatus(bundle.id, row.id, fact),
         iconVariant: highlighted ? ('alt' as const) : undefined,
         emphasized: highlighted ? true : undefined,

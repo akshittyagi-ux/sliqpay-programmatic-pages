@@ -47,7 +47,22 @@ export const COST_VALUES = [
   'Medium (2-3%)',
   'High (3-4%)',
   'High (4%+)',
+  // Percentages are hidden from competitors for now (may come back later) —
+  // see stripCostPercentage(). Kept here so validation accepts the
+  // keyword-only text it produces.
+  'Low',
+  'Medium',
+  'High',
 ] as const;
+
+// Competitors show only the Low/Medium/High keyword on the Cost row for
+// now — the percentage bucket may come back later, so the underlying
+// evidence value keeps it and this only strips it for display. Sliq is
+// unaffected (its cost cell is SLIQ_CANONICAL_TEXT.cost, never this path).
+export function stripCostPercentage(text: string): string {
+  const match = /^(Low|Medium|High)\s*\(.*\)$/.exec(text);
+  return match ? match[1] : text;
+}
 
 export const FX_RATE_VALUES = [
   'Mid-market exchange rate (no mark-ups) in most cases',
