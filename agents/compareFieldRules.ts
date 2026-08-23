@@ -91,7 +91,13 @@ export const COMPLIANCE_VALUES = [
 // pin (provider x field) is a one-line change here — no special-casing elsewhere.
 const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string>>> = {
   wise: { cost: 'Low (1-2%)' },
-  remitly: { cost: 'Fees depends on speed. 1-2% for standard, 3-4% for express' },
+  remitly: {
+    cost: 'Fees depends on speed. 1-2% for standard, 3-4% for express',
+    // Pinned per product request — these 15 well-known providers should
+    // read as "Licensed and regulated" regardless of what the compliance
+    // classifier finds on their site.
+    compliance: 'Licensed and regulated',
+  },
   // Binance.US is a crypto exchange, not a remittance service — its site has
   // no audience-segment content to classify against. It does run dedicated
   // Institutions/OTC trading pages, so "Businesses" is the closest honest fit.
@@ -123,7 +129,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // pages. The business-fees page that was scraped states "Get effective
   // fees as low as 1.9%.*" — the 1-2% bracket, which classifyCost() maps to
   // "Low".
-  paypal: { builtFor: 'Businesses', cost: 'Low (1-2%)' },
+  paypal: { builtFor: 'Businesses', cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
   // Aspora's 25-page metadata sample (getPrioritizedKnowledge) missed the
   // /live-currency-rates/* pages, so audience/fx signals came back empty even
   // though the site states both clearly. builtFor: scraped copy reads "trusted
@@ -142,10 +148,10 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // pricing... keeping things simple, fast, and low-cost" — no explicit %,
   // but a direct low-cost/transparent-pricing self-claim, same class of
   // evidence as Abound's "Best Exchange Rate Guaranteed" below.
-  'instarem-nium': { cost: 'Low (1-2%)' },
+  'instarem-nium': { cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
   // ICICI Money2India's wire-transfer page states "zero to low transfer
   // fees*" directly — a stated (asterisked) claim, not an inference.
-  'icici-money2india': { cost: 'Low (1-2%)' },
+  'icici-money2india': { cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
   // MoneyGram's site (a client-rendered SPA; most routes return the same
   // shell) never surfaced a specific audience segment or fee %, even after
   // fixing the scraper bugs that were polluting its page budget (sitemap-index
@@ -156,7 +162,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // Binance.US below). Its own marketing states "get great exchange rates,
   // low transfer fees" — a direct low-cost self-claim, same class of evidence
   // as Abound's below.
-  moneygram: { builtFor: 'Expats', cost: 'Low (1-2%)' },
+  moneygram: { builtFor: 'Expats', cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
   // Payoneer's own /fees page states "1% (minimum fee of 1.00 USD)" / "fixed
   // fee or 1% fee" for currency conversion — a direct stated %, not an
   // inference. builtFor: site explicitly targets "freelancers" and
@@ -166,7 +172,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // SWIFT/bank-transfer payouts, but doesn't use the bare word "wire" that
   // the pattern matcher looks for — real evidence, pattern-matcher gap.
   airwallex: { transferMethods: 'Credit Card, Debit Card, Wire' },
-  payoneer: { builtFor: 'Businesses, Freelancers', cost: 'Low (1%)' },
+  payoneer: { builtFor: 'Businesses, Freelancers', cost: 'Low (1%)', compliance: 'Licensed and regulated' },
   // Ria's site states "low flat fees, great exchange rates, and no hidden
   // costs" and "Ria offers competitive fees" — no exact %, same "Low,
   // inferred from marketing claim" reasoning as Abound. No clear audience-
@@ -176,7 +182,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // Western Union's own site shows "0₹ transfer fee* for your online
   // transfers" and "transfer money with no fee to bank accounts in certain
   // countries" — a stated (asterisked/conditional) claim, not an inference.
-  'western-union': { cost: 'Low (1-2%)' },
+  'western-union': { cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
   // Xe's site repeatedly states "zero transfer fees", "low fees starting at
   // $0", and "zero fees" for business customers — a direct, repeated claim.
   'xe-money-transfer': { cost: 'Low (1-2%)' },
@@ -184,7 +190,9 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // — a direct claim. No clear audience-segment content scraped; Xoom
   // (PayPal's remittance product) is P2P consumer remittance for diaspora
   // sending money home, same reasoning as MoneyGram/Ria above.
-  'xoom-paypal': { builtFor: 'Expats', cost: 'Low (1-2%)' },
+  'xoom-paypal': { builtFor: 'Expats', cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
+  'cashfree-payments': { compliance: 'Licensed and regulated' },
+  razorpay: { compliance: 'Licensed and regulated' },
   // xflow's site states "0.6% flat fee, 0% fx margin" directly, well below
   // the 1% bracket floor — classified at the lowest tier rather than
   // invented. builtFor: explicit "freelancers & agencies" and "7,000+
@@ -307,7 +315,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // Deel's site describes managing "global teams" for "40,000+ companies
   // from startups to enterprise" — real evidence for Businesses. Cost: "no
   // hidden fees... clear, upfront pricing" — a direct claim.
-  deel: { builtFor: 'Businesses', cost: 'Low (1-2%)' },
+  deel: { builtFor: 'Businesses', cost: 'Low (1-2%)', compliance: 'Licensed and regulated' },
   // Intermex explicitly serves "minority-owned businesses" and partners
   // with an immigrant-justice non-profit — real evidence for Expats
   // (diaspora remittance), same reasoning as MoneyGram/Ria above. Cost:
@@ -383,7 +391,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // EbixCash's LLM signal only set tourists (dropped, reserved for Sliq)
   // alongside businesses; Businesses is the valid remaining segment. Cost
   // already has a valid LLM-detected signal (2-3%).
-  'ebixcash-ebixcash-world-money': { builtFor: 'Businesses' },
+  'ebixcash-ebixcash-world-money': { builtFor: 'Businesses', compliance: 'Licensed and regulated' },
   // Ebury's site states "no hidden costs... transparent pricing — no setup
   // costs, hidden fees or unpleasant surprises" and "zero fees for early
   // repayment" — a direct, repeated claim. builtFor already has a valid
@@ -398,6 +406,7 @@ const FIELD_VALUE_OVERRIDES: Record<string, Partial<Record<GovernedField, string
   // A customer review states funds arrived "na konto odbiorcy" ("to the
   // recipient's account") — a wire-style bank deposit.
   'england-pl': { builtFor: 'Expats', cost: 'Low (1-2%)', transferMethods: 'Wire' },
+  'muthoot-fincorp-ltd': { compliance: 'Licensed and regulated' },
   // LuLu Money's site states it lets customers "reload wallet instantly at
   // best exchange rate and low fees" — a direct claim. builtFor already
   // has a valid LLM-detected signal (Businesses).
